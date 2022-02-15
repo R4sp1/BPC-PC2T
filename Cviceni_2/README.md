@@ -8,6 +8,7 @@ Vytvořte třídu databaze, která bude obsahovat následující položky:
 6. Metodu, jejíž vstupní parametr bude nová hodnota úvazku, v případě, že součet aktuálního a
 nového úvazku bude vyšší než maximální hodnota úvazku, metoda vrátí false v opačném případě
 přičte nový úvazek k aktuálnímu a vrátí true
+
 Vytvořte třídu DatabaseOperation, která bude obsahovat pouze třídu main a proveďte následující:
 1. Vytvořte pole objektů typu database o velikosti 3
 2. Naplnťe je jménem a rokem narození z příkazové řádky
