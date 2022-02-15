@@ -18,8 +18,8 @@ public class Database {
         return Obligation;
     }
 
-    public static void setMaxObligation(double maxobligation) {         //Nastavuje vysi maximalniho uvazku (v zakladu 1)
-        MaxObligation = maxobligation;
+    public static void setMaxObligation(double car) {         //Nastavuje vysi maximalniho uvazku (v zakladu 1)
+        MaxObligation = car;
     }
 
     public boolean AddObligation(double Obligation) {                   //Metoda ktera kontroluje hodnotu maximalniho uvazku
