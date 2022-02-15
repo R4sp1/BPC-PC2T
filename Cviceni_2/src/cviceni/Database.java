@@ -4,7 +4,7 @@ public class Database {
     private String Name;                                                //Definice promennych
     private int Year;
     private double Obligation = 0;
-    private static double MaxObligation = 1;
+    public static double MaxObligation = 1;
 
     public String getName() {                                           //Gettery pro jednotlive promenne
         return Name;
