@@ -1,4 +1,4 @@
-#Assignment of the Cviceni 2
+# Assignment of the Cviceni 2
 Vytvořte třídu databaze, která bude obsahovat následující položky:
 1. Proměnné pro Jméno osoby, rok narozeni a výši úvazku (v oboru reálných čísel)
 2. Statickou proměnnou obsahující maximální možný úvazek (zpočátku nastaven na 1)
