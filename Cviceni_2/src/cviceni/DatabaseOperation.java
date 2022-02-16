@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class DatabaseOperation {
 
     public static void main(String[] args) {
-        int PersonNumber = 1;                                                       //Velikost databaze
+        int PersonNumber = 3;                                                       //Velikost databaze
 
         Database[] PersonDatabase = new Database[PersonNumber];                     //Pole objektu - databaze
 
@@ -41,13 +41,13 @@ public class DatabaseOperation {
 
             if (!sc.hasNextInt()) {                                                 //Pokud jsme nezadali cislo typu int hodi chybu
                 System.out.println("Nezadali jste spravne cislo osoby!!!");
-                continue;
+                break;
             }
 
             int Number = sc.nextInt() - 1;                                          //Indexovani databaze je od 0 ale my ji zobrazjujeme od 1
 
             if (Number < 0 || Number > PersonNumber) {                              //Kontrola zda je osoba v databazi
-                System.out.println("Cislo osoby mimo rozsah databze");
+                System.out.println("Cislo osoby mimo rozsah databaze");
                 continue;
             }
 
@@ -55,6 +55,7 @@ public class DatabaseOperation {
                 System.out.println("Nezadali jste spravne vysi uvazku!");
                 continue;
             }
+
 
             double Obligation = sc.nextDouble();
 
@@ -65,6 +66,7 @@ public class DatabaseOperation {
             } else {
                 System.out.println(" nelze dale uvazek zvysit. Maximalni hodnota uvazku: " + Database.MaxObligation + ", aktualni hodnota uvazku je: " + PersonDatabase[Number].getObligation());
             }
+
         }
     }
 }
