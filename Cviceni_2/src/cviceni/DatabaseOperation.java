@@ -1,11 +1,11 @@
 package cviceni;
 
-import java.util.Scanner;
+import java.util.Scanner;                                                           //Import knihovny
 
 public class DatabaseOperation {
 
     public static void main(String[] args) {
-        int PersonNumber = 3;                                                       //Velikost databaze
+        int PersonNumber = 1;                                                       //Velikost databaze
 
         Database[] PersonDatabase = new Database[PersonNumber];                     //Pole objektu - databaze
 
