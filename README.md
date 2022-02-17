@@ -1,2 +1,2 @@
 # PC2T
-Repository for BPC-PC2T course on FEEC BUT
+Student repository for BPC-PC2T course on FEEC BUT
