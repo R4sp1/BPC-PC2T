@@ -1,1 +1,2 @@
-Repozitář k předmětu BPC-PC2T
+# PC2T
+Repository for BPC-PC2T course on FEEC BUT
