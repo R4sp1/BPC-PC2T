@@ -1,41 +1,32 @@
 package Cviceni_3;
 
-public class BPIS implements Predmet{
-    private int points;
-    public boolean problem;
-    private int pointsTotal;
+import static Cviceni_3.BPC2.getString;
 
-    @Override
+public class BPIS implements Predmet {
+
+    private double points;
+    public boolean problem;
+    private double pointsTotal;
+
+    @Override                                                                                                           //Prepisuje nadrazenou classu
     public String getName() {
         return "BPIS";
     }
 
     @Override
-    public int getPoints() {
+    public double getPoints() {
         return points;
     }
 
     @Override
-    public String getMark() {
+    public String getMark() {                                                                                           //Na zaklade bodu priradi znamku
         pointsTotal = getPoints();
-        if(pointsTotal >= 90){
-            return "A";
-        }else if(pointsTotal >= 80){
-            return "B";
-        }else if(pointsTotal >= 70){
-            return "C";
-        }else if(pointsTotal >= 60){
-            return "D";
-        }else if(pointsTotal >= 50){
-            return "E";
-        }else {
-            return "F";
-        }
+        return getString(pointsTotal);
     }
 
     @Override
     public void getEval() {
-        if (points >= pointsToCredit){
+        if (points >= pointsToCredit) {                                                                                 //Udeleni zapoctu
             System.out.println(getName() + " | Mate udelen zapocet.\t\t\t\t\t\tCelkovy pocet bodu: " + getPoints() + "\t Vase znamka: " + getMark());
         } else {
             System.out.println(getName() + " | Nemate dostatek bodu k udeleni zapoctu.");
@@ -43,8 +34,8 @@ public class BPIS implements Predmet{
     }
 
 
-    public void setPoints(int points) {
-        if (points <= 100){
+    public void setPoints(double points) {
+        if (points <= 100) {
             this.points = points;
             problem = false;
         } else {
