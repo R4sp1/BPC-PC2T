@@ -2,7 +2,7 @@ package Cviceni_3;
 
 public class BPC1 implements Predmet {
 
-    private int pointsTutorials;
+    private int pointsExercises;
     private int pointsFinalExam;
     private int pointsTotal;
     public boolean problem;
@@ -14,7 +14,7 @@ public class BPC1 implements Predmet {
 
     @Override
     public int getPoints() {
-        return pointsTutorials + pointsFinalExam;
+        return pointsExercises + pointsFinalExam;
     }
 
     @Override
@@ -22,13 +22,13 @@ public class BPC1 implements Predmet {
         pointsTotal = getPoints();
         if(pointsTotal >= 90){
             return "A";
-        }else if(pointsTotal >= 80 && pointsTotal <=90){
+        }else if(pointsTotal >= 80){
             return "B";
-        }else if(pointsTotal >= 70 && pointsTotal <=80){
+        }else if(pointsTotal >= 70){
             return "C";
-        }else if(pointsTotal >= 60 && pointsTotal <=80){
+        }else if(pointsTotal >= 60){
             return "D";
-        }else if(pointsTotal >= 50 && pointsTotal <=60){
+        }else if(pointsTotal >= 50){
             return "E";
         }else {
             return "F";
@@ -37,21 +37,21 @@ public class BPC1 implements Predmet {
 
     @Override
     public void getEval() {
-        if (pointsTutorials > BODYKZAPOCTU - 1){
-            System.out.println(getName() + " | Gratulujeme, mate udelen zapocet s poctem bodu: " + pointsTutorials + "\tCelkovy pocet bodu: " + getPoints() + "\t Vase znamka: " + getMark() + ".");
+        if (pointsExercises >= pointsToCredit){
+            System.out.println(getName() + " | Mate udelen zapocet s poctem bodu: " + pointsExercises + "\tCelkovy pocet bodu: " + getPoints() + "\t Vase znamka: " + getMark());
             problem = false;
         } else {
-            System.out.println(getName() + " | Bohuzel, ale ziskali jste " + pointsTutorials + " bodu, to neni dostatek k udeleni zapoctu.");
+            System.out.println(getName() + " | Nemate dostatek bodu k udeleni zapoctu.");
             problem = true;
         }
     }
 
     public void setTutorialPoints(int points){
-        if (pointsTutorials + points < 21){
-            pointsTutorials += points;
+        if (pointsExercises + points < 21){
+            pointsExercises += points;
             problem = false;
         } else {
-            System.out.println("Maximalni hodnoceni aktivity na hodinach je 20 bodu.");
+            System.out.println("Maximalni hodnoceni aktivity na hodinach je 20 bodu. Zadejte novy pocet bodu!");
             problem = true;
         }
     }
@@ -61,7 +61,7 @@ public class BPC1 implements Predmet {
             pointsFinalExam = points;
             problem = false;
         } else {
-            System.out.println("Maximalni hodnoceni zaverecne zkousky je 80 bodu.");
+            System.out.println("Maximalni hodnoceni zaverecne zkousky je 80 bodu. Zadejte novy pocet bodu!");
             problem = true;
         }
     }

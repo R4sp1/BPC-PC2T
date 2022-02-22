@@ -20,13 +20,13 @@ public class BPIS implements Predmet{
         pointsTotal = getPoints();
         if(pointsTotal >= 90){
             return "A";
-        }else if(pointsTotal >= 80 && pointsTotal <=90){
+        }else if(pointsTotal >= 80){
             return "B";
-        }else if(pointsTotal >= 70 && pointsTotal <=80){
+        }else if(pointsTotal >= 70){
             return "C";
-        }else if(pointsTotal >= 60 && pointsTotal <=80){
+        }else if(pointsTotal >= 60){
             return "D";
-        }else if(pointsTotal >= 50 && pointsTotal <=60){
+        }else if(pointsTotal >= 50){
             return "E";
         }else {
             return "F";
@@ -35,16 +35,16 @@ public class BPIS implements Predmet{
 
     @Override
     public void getEval() {
-        if (points > BODYKZAPOCTU - 1){
-            System.out.println(getName() + " | Gratulujeme, mate udelen zapocet.\t\t\t\t\tCelkovy pocet bodu: " + getPoints() + "\t Vase znamka: " + getMark() + ".");
+        if (points >= pointsToCredit){
+            System.out.println(getName() + " | Mate udelen zapocet.\t\t\t\t\t\tCelkovy pocet bodu: " + getPoints() + "\t Vase znamka: " + getMark());
         } else {
-            System.out.println(getName() + " | Bohuzel, ale zapocet jste neziskali.");
+            System.out.println(getName() + " | Nemate dostatek bodu k udeleni zapoctu.");
         }
     }
 
 
     public void setPoints(int points) {
-        if (points < 101){
+        if (points <= 100){
             this.points = points;
             problem = false;
         } else {

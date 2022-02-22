@@ -24,13 +24,13 @@ public class BPC2 implements Predmet{
         pointsTotal = getPoints();
         if(pointsTotal >= 90){
             return "A";
-        }else if(pointsTotal >= 80 && pointsTotal <=90){
+        }else if(pointsTotal >= 80){
             return "B";
-        }else if(pointsTotal >= 70 && pointsTotal <=80){
+        }else if(pointsTotal >= 70){
             return "C";
-        }else if(pointsTotal >= 60 && pointsTotal <=80){
+        }else if(pointsTotal >= 60){
             return "D";
-        }else if(pointsTotal >= 50 && pointsTotal <=60){
+        }else if(pointsTotal >= 50){
             return "E";
         }else {
             return "F";
@@ -39,11 +39,11 @@ public class BPC2 implements Predmet{
 
     @Override
     public void getEval() {
-        if (pointsProject > BODYKZAPOCTU - 1){
-            System.out.println(getName() + " | Gratulujeme, mate udelen zapocet s poctem bodu: " + pointsProject + "\tCelkovy pocet bodu: " + getPoints() + "\t Vase znamka: " + getMark() + ".");
+        if (pointsProject >= pointsToCredit){
+            System.out.println(getName() + " | Mate udelen zapocet s poctem bodu: " + pointsProject + "\tCelkovy pocet bodu: " + getPoints() + "\t Vase znamka: " + getMark());
             problem = false;
         } else {
-            System.out.println(getName() + " | Bohuzel, ale ziskali jste " + pointsProject + " bodu, to neni dostatek k udeleni zapoctu.");
+            System.out.println(getName() + " | Nemate dostatek bodu k udeleni zapoctu.");
             problem = true;
         }
     }
@@ -53,7 +53,7 @@ public class BPC2 implements Predmet{
             pointsProject = points;
             problem = false;
         } else {
-            System.out.println("Maximalni hodnoceni projektu je 30 bodu.");
+            System.out.println("Maximalni hodnoceni projektu je 30 bodu. Zadejte novy pocet bodu!");
             problem = true;
         }
     }
@@ -63,7 +63,7 @@ public class BPC2 implements Predmet{
             pointsHalfExam = points;
             problem = false;
         } else {
-            System.out.println("Maximalni hodnoceni pulsemestralniho testu je 20 bodu.");
+            System.out.println("Maximalni hodnoceni pulsemestralniho testu je 20 bodu. Zadejte novy pocet bodu!");
             problem = true;
         }
     }
@@ -73,7 +73,7 @@ public class BPC2 implements Predmet{
             pointsFinalExam = points;
             problem = false;
         } else {
-            System.out.println("Maximalni hodnoceni zaverecne zkousky je 50 bodu.");
+            System.out.println("Maximalni hodnoceni zaverecne zkousky je 50 bodu. Zadejte novy pocet bodu!");
             problem = true;
         }
     }
