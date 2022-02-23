@@ -16,7 +16,6 @@ public class Test {
             input.nextLine();
             return getNum(input);
         }
-
     }
 
     public static void main(String[] args) {
@@ -53,7 +52,6 @@ public class Test {
         do {
             b.setHalfExamPoints(getNum(input));
         } while (b.problem);
-
         System.out.print(b.getName() + " | Zadejte bodove hodnoceni zaverecne zkousky (max.50): ");
         do {
             b.setFinalExamPoints(getNum(input));

@@ -7,7 +7,6 @@ public class BPC2 implements Predmet {
     private double pointsFinalExam;
     public boolean problem;
 
-
     @Override
     public String getName() {
         return "BPC2";
@@ -20,7 +19,7 @@ public class BPC2 implements Predmet {
 
     @Override
     public String getMark() {
-        double pointsTotal = getPoints();
+        var pointsTotal = getPoints();
         return getString(pointsTotal);
     }
 

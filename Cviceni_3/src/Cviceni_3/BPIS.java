@@ -6,7 +6,6 @@ public class BPIS implements Predmet {
 
     private double points;
     public boolean problem;
-    private double pointsTotal;
 
     @Override                                                                                                           //Prepisuje nadrazenou classu
     public String getName() {
@@ -20,7 +19,7 @@ public class BPIS implements Predmet {
 
     @Override
     public String getMark() {                                                                                           //Na zaklade bodu priradi znamku
-        pointsTotal = getPoints();
+        var pointsTotal = getPoints();
         return getString(pointsTotal);
     }
 

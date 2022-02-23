@@ -6,7 +6,6 @@ public class BPC1 implements Predmet {
 
     private double pointsExercises;
     private double pointsFinalExam;
-    private double pointsTotal;
     public boolean problem;
 
     @Override
@@ -21,7 +20,7 @@ public class BPC1 implements Predmet {
 
     @Override
     public String getMark() {
-        pointsTotal = getPoints();
+        var pointsTotal = getPoints();
         return getString(pointsTotal);
     }
 
