@@ -23,12 +23,12 @@
 
     1. Vytvořte pole objektů Zboží o velikost 4 a naplňte je zbožím s následujícími parametry:
         - Potravina, název: Rohlík, cena: 1,5, trvanlivost: 1
-        - Nářadí, název:Kleště, cena 278,0, záruka: 24
+        - Nářadí, název: Kleště, cena: 278,0, záruka: 24
         - Potravina, název: Chleba, cena:20,8, trvanlivost: 6
         - Potravina, název: Jablko, cena: 51,0, trvanlivost: 20
 
     2. Pomocí for cyklu vypište pro jednotlivé položky pole jejich název a cenu. V případě potravin vypište i trvanlivost včetně jednotky.
         - Rohlík, cena: 1,815, trvanlivost: 1 dnů
-        - Kleště, cena 278,38
+        - Kleště, cena: 278,38
         - Chleba, cena: 20,168, trvanlivost: 6 dnů
         - Jablko, cena: 61,71, trvanlivost: 20 dnů 
