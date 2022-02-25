@@ -17,7 +17,8 @@
     1. Parametr záruční doby (celá čísla)
     2. Kontruktor, pomocí, kterého lze záruční dobu zadat
     3. Getter a Setter pro parametr záruky
-    4. Implementaci metody getJednotka, která bude vracet textový řetězec „měsíců“
+    4. Implementaci metody getJednotka, která bude vracet textový řetězec „měsíc“
+
 
 4. Nakonec vytvořte třídu Test, která bude obsahovat metodu main, ve které:
 
