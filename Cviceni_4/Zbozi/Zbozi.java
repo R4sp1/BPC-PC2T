@@ -10,23 +10,23 @@ public abstract class Zbozi {
         this.price = price;
     }
 
-    public String GetName(){
+    public String getName(){
         return name;
     }
 
-    public void SetName(String name){
+    public void setName(String name){
         this.name = name;
     }
     
-    public double GetPrice(){
+    public double getPrice(){
         return price*(1+DPH);
     }
 
-    public void SetPrice(double price){
+    public void setPrice(double price){
         this.price = price;
     }
 
-    public double GetDPH(){
+    public double getDPH(){
         return DPH;
     }
 
@@ -34,5 +34,5 @@ public abstract class Zbozi {
         Zbozi.DPH = DPH;
     }
 
-    public abstract getJednotka();
+    public abstract String getJednotka();
 }
