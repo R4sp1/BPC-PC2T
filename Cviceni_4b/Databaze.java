@@ -9,7 +9,7 @@ public class Databaze {
 	public void setStudent() {
 		System.out.println("Zadejte jmeno studenta, rok narozeni");
 		String jmeno = sc.next();
-		int rok = sc.nextInt();
+		int rok = Test.pouzeCelaCisla(sc);
 		prvkyDatabaze[posledniStudent++] = new Student(jmeno, rok);
 	}
 
