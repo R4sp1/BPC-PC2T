@@ -1,5 +1,4 @@
 package Cviceni_3;
-
 import java.util.Scanner;
 
 public class Test {

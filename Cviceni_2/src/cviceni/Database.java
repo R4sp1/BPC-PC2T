@@ -1,4 +1,4 @@
-package cviceni;
+
 
 public class Database {
     private String Name;                                                //Definice promennych

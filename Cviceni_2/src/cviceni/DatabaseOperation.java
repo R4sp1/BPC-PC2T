@@ -1,4 +1,4 @@
-package cviceni;
+
 
 import java.util.Scanner;                                                           //Import knihovny
 
@@ -66,7 +66,7 @@ public class DatabaseOperation {
             } else {
                 System.out.println(" nelze dale uvazek zvysit. Maximalni hodnota uvazku: " + Database.MaxObligation + ", aktualni hodnota uvazku je: " + PersonDatabase[Number].getObligation());
             }
-
+            sc.close();
         }
     }
 }

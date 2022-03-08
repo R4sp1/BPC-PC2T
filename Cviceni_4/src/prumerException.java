@@ -1,3 +1,5 @@
+package src;
+
 public class prumerException extends java.lang.Exception {
     public prumerException() {
         super("Nezadan zadny prumer");

@@ -1,6 +1,8 @@
 {
     "java.project.sourcePaths": [
+        "Cviceni_2/src/cviceni",
+        "Cviceni_3",
         "Cviceni_4",
-        "Cviceni_4b"
+        "Cviceni_5"
     ]
 }
