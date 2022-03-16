@@ -4,10 +4,11 @@ public class Student {
 	private String jmeno;
 	private int rocnik;
 	private float studijniPrumer;
-	
+
 	public Student(String jmeno, int rocnik) {
 		this.jmeno = jmeno;
 		this.rocnik = rocnik;
+		studijniPrumer = 1;
 	}
 
 	public String getJmeno() {
@@ -22,12 +23,10 @@ public class Student {
 		return studijniPrumer;
 	}
 
-	public boolean setStudijniPrumer(float studijniPrumer) {
-		if (studijniPrumer < 1 || studijniPrumer > 5) {
-			System.out.println("Chybny prumer");
-			return false;
+	public void setStudijniPrumer(float studijniPrumer) throws prumerException {
+		if (studijniPrumer < 1 || studijniPrumer > 5){
+			throw new prumerException("Zadan nespravny prumer!");
 		}
 		this.studijniPrumer = studijniPrumer;
-		return true;
 	}
 }

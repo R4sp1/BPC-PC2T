@@ -1,19 +1,17 @@
-import java.util.Set;
-import java.util.Map;
 import java.util.HashMap;
-
+import java.util.Map;
+import java.util.Set;
 
 public class Databaze {
 
-	public String jmeno;
-	public int rocnik;
+	private Map<String, Student> prvkyDatabaze;
 
-	public Databaze() {
+	Databaze() {
 		prvkyDatabaze = new HashMap<String, Student>();
 	}
 
-	public boolean setStudent() {
-		if (prvkyDatabaze.put(jmeno, new Student(jmeno, rocnik)) == null) {
+	public boolean setStudent(String jmeno, int rok) {
+		if (prvkyDatabaze.put(jmeno, new Student(jmeno, rok)) == null) {
 			return true;
 		} else {
 			return false;
@@ -24,7 +22,7 @@ public class Databaze {
 		return prvkyDatabaze.get(jmeno);
 	}
 
-	public boolean setPrumer(String jmeno, double prumer) {
+	public boolean setPrumer(String jmeno, float prumer) {
 		if (prvkyDatabaze.get(jmeno) == null) {
 			return false;
 		}
@@ -45,6 +43,4 @@ public class Databaze {
 			System.out.println(jmeno);
 		}
 	}
-
-	private Map<String, Student> prvkyDatabaze;
 }
