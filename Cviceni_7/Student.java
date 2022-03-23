@@ -1,10 +1,9 @@
-
 public class Student {
 
 	private String jmeno;
 	private int rocnik;
 	private float studijniPrumer;
-	
+
 	public Student(String jmeno, int rocnik) {
 		this.jmeno = jmeno;
 		this.rocnik = rocnik;

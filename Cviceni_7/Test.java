@@ -39,7 +39,7 @@ public class Test {
 		boolean run = true;
 
 		while (run) {
-			System.out.println("Vyberte pozadovanou cinnost:");
+			System.out.println("\nVyberte pozadovanou cinnost:");
 			System.out.println("1 .. vlozeni noveho studenta");
 			System.out.println("2 .. nastaveni prumeru studenta");
 			System.out.println("3 .. vypis informace o studentovi");
