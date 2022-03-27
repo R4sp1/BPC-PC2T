@@ -9,118 +9,119 @@ import cz.vutbr.feec.dbconnection.crud.UpdateQueries;
 import cz.vutbr.feec.dbconnection.dbconn.DBConnection;
 
 /**
- * POZN. V ˙kolech je ËastÈ doimplementovat p¯Ìkaz nebo celou metodu, proto pokud se z tÈto t¯Ìdy
- * chcete dostat k implementaci metody zm·ËknÏte tlaËÌtko Control a prav˝m najeÔte na metodu, kterou
- * m·te implementovat a kliknÏte na Open Implementation.
+ * POZN. V √∫kolech je ƒçast√© doimplementovat p≈ô√≠kaz nebo celou metodu, proto
+ * pokud se z t√©to t≈ô√≠dy chcete dostat k implementaci metody zm√°ƒçknƒõte tlaƒç√≠tko
+ * Control a prav√Ωm najeƒète na metodu, kterou m√°te implementovat a kliknƒõte na
+ * Open Implementation.
  * 
- * @author Pavel äeda (154208)
+ * @author Pavel ≈†eda (154208)
  *
  */
 public class RunApp {
 
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
 
-    int choice = 0;
-    boolean run = true;
-    int iteration = 0;
+		int choice = 0;
+		boolean run = true;
+		int iteration = 0;
 
-    while (run) {
-      if (iteration == 0)
-        iteration++;
-      else
-        System.out.println(System.lineSeparator());
-      System.out.println("Vyberte poûadovanou Ëinnost:");
-      System.out.println("1 .. vloûenÌ uûivatele s emailem myname123@stud.feec.vutbr.cz");
-      System.out.println("2 .. vloûenÌ libovolnÈho zadanÈho uûivatele");
-      System.out.println("3 .. v˝pis emailu, jmÈna a p¯ÌjmenÌ o vöech uûivatelÌch");
-      System.out.println("4 .. v˝pis vöech uûivatel˘ s rolÌ USER");
-      System.out.println("5 .. zv˝öenÌ platu uûivatele s emailem: myname@stud.feec.vutbr.cz o 20%");
-      System.out.println("6 .. smaz·nÌ uûivatele");
-      System.out.println("7 .. v˝pis vöech rolÌ v systÈmu");
-      System.out.println("8 .. ukonceni aplikace");
-      choice = ConsoleInput.readNumberInputFromConsole(sc);
-      switch (choice) {
-        case 1:
-          // tento p¯Ìklad zn·zorÚuje vloûenÌ uûivatele s emailem: myname123@stud.feec.vutbr.cz,
-          // jmÈnem Jon, p¯ijmenÌm Doe, vÏkem 30 let a v˝öÌ platu 10 000
-          InsertQueries i = new InsertQueries();
-          i.performInsertQuery("INSERT INTO user " + "(email,name,surname,age,salary)"
-              + "VALUES('myname123@stud.feec.vutbr.cz', 'Jon','Doe', 30, 10000)");
-          break;
-        case 2:
-          System.out.println("Zadejte email uûivatele");
-          String email = sc.next();
-          SelectQueries testUserExistence = new SelectQueries();
-          if (testUserExistence.testIfUserExists(email)) {
-            String userEmailToCreate = "";
-            do {
-              System.out.println(
-                  "Uûivatel s takov˝mto emailem jiû existuje prosÌm zadejte email znovu: ");
-              userEmailToCreate = sc.next();
-            } while (testUserExistence.testIfUserExists(userEmailToCreate));
-          }
+		while (run) {
+			if (iteration == 0)
+				iteration++;
+			else
+				System.out.println(System.lineSeparator());
+			System.out.println("Vyberte po≈æadovanou ƒçinnost:");
+			System.out.println("1 .. vlo≈æen√≠ u≈æivatele s emailem myname123@stud.feec.vutbr.cz");
+			System.out.println("2 .. vlo≈æen√≠ libovoln√©ho zadan√©ho u≈æivatele");
+			System.out.println("3 .. v√Ωpis emailu, jm√©na a p≈ô√≠jmen√≠ o v≈°ech u≈æivatel√≠ch");
+			System.out.println("4 .. v√Ωpis v≈°ech u≈æivatel≈Ø s rol√≠ USER");
+			System.out.println("5 .. zv√Ω≈°en√≠ platu u≈æivatele s emailem: myname@stud.feec.vutbr.cz o 20%");
+			System.out.println("6 .. smaz√°n√≠ u≈æivatele");
+			System.out.println("7 .. v√Ωpis v≈°ech rol√≠ v syst√©mu");
+			System.out.println("8 .. ukonceni aplikace");
+			choice = ConsoleInput.readNumberInputFromConsole(sc);
+			switch (choice) {
+			case 1:
+				// tento p≈ô√≠klad zn√°zor≈àuje vlo≈æen√≠ u≈æivatele s emailem:
+				// myname123@stud.feec.vutbr.cz,
+				// jm√©nem Jon, p≈ôijmen√≠m Doe, vƒõkem 30 let a v√Ω≈°√≠ platu 10 000
+				InsertQueries i = new InsertQueries();
+				i.performInsertQuery("INSERT INTO user " + "(email,name,surname,age,salary)"
+						+ "VALUES('myname123@stud.feec.vutbr.cz', 'Jon','Doe', 30, 10000)");
+				break;
+			case 2:
+				System.out.println("Zadejte email u≈æivatele");
+				String email = sc.next();
+				SelectQueries testUserExistence = new SelectQueries();
+				if (testUserExistence.testIfUserExists(email)) {
+					String userEmailToCreate = "";
+					do {
+						System.out.println("U≈æivatel s takov√Ωmto emailem ji≈æ existuje pros√≠m zadejte email znovu: ");
+						userEmailToCreate = sc.next();
+					} while (testUserExistence.testIfUserExists(userEmailToCreate));
+				}
 
-          System.out.println("Zadejte jmÈno uûivatele");
-          String name = sc.next();
-          System.out.println("Zadejte p¯ÌjmenÌ uûivatele");
-          String surname = sc.next();
+				System.out.println("Zadejte jm√©no u≈æivatele");
+				String name = sc.next();
+				System.out.println("Zadejte p≈ô√≠jmen√≠ u≈æivatele");
+				String surname = sc.next();
 
-          InsertQueries i2 = new InsertQueries();
-          i2.insertNewUser(email, name, surname);
-          break;
-        case 3:
-          SelectQueries se = new SelectQueries();
-          // doplÚtÏ tuto metodu dle zad·nÌ v metodÏ
-          se.getAllUserEmailAndNameAndSurname();
-          break;
-        case 4:
-          SelectQueries selectUserRoles = new SelectQueries();
-          // prostudujte si tuto metodu a zjistÏte, jak funguje JOIN tabulek
-          selectUserRoles.getAllUsersWithRoleUser();
-          break;
-        case 5:
-          SelectQueries selectUser = new SelectQueries();
-          System.out.println("Email a plat uûivatele p¯ed zv˝öenÌm platu o 20%");
-          selectUser.printUserEmailAndSalary("myname@stud.feec.vutbr.cz");
-          UpdateQueries updateQuery = new UpdateQueries();
+				InsertQueries i2 = new InsertQueries();
+				i2.insertNewUser(email, name, surname);
+				break;
+			case 3:
+				SelectQueries se = new SelectQueries();
+				// dopl≈àtƒõ tuto metodu dle zad√°n√≠ v metodƒõ
+				se.getAllUserEmailAndNameAndSurname();
+				break;
+			case 4:
+				SelectQueries selectUserRoles = new SelectQueries();
+				// prostudujte si tuto metodu a zjistƒõte, jak funguje JOIN tabulek
+				selectUserRoles.getAllUsersWithRoleUser();
+				break;
+			case 5:
+				SelectQueries selectUser = new SelectQueries();
+				System.out.println("Email a plat u≈æivatele p≈ôed zv√Ω≈°en√≠m platu o 20%");
+				selectUser.printUserEmailAndSalary("myname@stud.feec.vutbr.cz");
+				UpdateQueries updateQuery = new UpdateQueries();
 
-          // doplÚte tuto metodu, tak abyste tomuto uûivateli zv˝öili plat o 20%
-          updateQuery.increase20PercentOfSalary("myname@stud.feec.vutbr.cz");
+				// dopl≈àte tuto metodu, tak abyste tomuto u≈æivateli zv√Ω≈°ili plat o 20%
+				updateQuery.increase20PercentOfSalary("myname@stud.feec.vutbr.cz");
 
-          System.out.println("Email a plat uûivatele po zv˝öenÌm platu o 20%");
-          selectUser.printUserEmailAndSalary("myname@stud.feec.vutbr.cz");
-          break;
-        case 6:
-          System.out.println(
-              "Zadejte email uûivatele, kterÈho chcete vymazat z datab·ze (nap¯. myname123@stud.feec.vutbr.cz)");
-          String userName = sc.next();
-          SelectQueries s = new SelectQueries();
-          if (s.testIfUserExists(userName)) {
-            DeleteQueries d = new DeleteQueries();
+				System.out.println("Email a plat u≈æivatele po zv√Ω≈°en√≠m platu o 20%");
+				selectUser.printUserEmailAndSalary("myname@stud.feec.vutbr.cz");
+				break;
+			case 6:
+				System.out.println(
+						"Zadejte email u≈æivatele, kter√©ho chcete vymazat z datab√°ze (nap≈ô. myname123@stud.feec.vutbr.cz)");
+				String userName = sc.next();
+				SelectQueries s = new SelectQueries();
+				if (s.testIfUserExists(userName)) {
+					DeleteQueries d = new DeleteQueries();
 
-            // doplÚte metodu na vymaz·nÌ uûivatele dle emailu
-            d.deleteUserByEmail(userName);
-          } else {
-            System.out
-                .println("Uûivatel se zadan˝m emailem neexistuje, zkuste zadat email spr·vnÏ.");
-            break;
-          }
-          break;
-        case 7:
-          SelectQueries roles = new SelectQueries();
-          // implementuje celou metodu printAllRolesInDB, tak aby vypsala vöechny role v DB
-          roles.printAllRolesInDB();
-          break;
-        case 8:
-          run = false;
-          DBConnection.closeConnection();
-          break;
-        default:
-          run = false;
-          DBConnection.closeConnection();
-          break;
-      }
-    }
-  }
+					// dopl≈àte metodu na vymaz√°n√≠ u≈æivatele dle emailu
+					d.deleteUserByEmail(userName);
+				} else {
+					System.out.println("U≈æivatel se zadan√Ωm emailem neexistuje, zkuste zadat email spr√°vnƒõ.");
+					break;
+				}
+				break;
+			case 7:
+				SelectQueries roles = new SelectQueries();
+				// implementuje celou metodu printAllRolesInDB, tak aby vypsala v≈°echny role v
+				// DB
+				roles.printAllRolesInDB();
+				break;
+			case 8:
+				run = false;
+				DBConnection.closeConnection();
+				break;
+			default:
+				run = false;
+				DBConnection.closeConnection();
+				break;
+			}
+		}
+	}
 }

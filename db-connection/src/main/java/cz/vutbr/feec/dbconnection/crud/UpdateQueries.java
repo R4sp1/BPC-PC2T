@@ -8,7 +8,7 @@ import cz.vutbr.feec.dbconnection.dbconn.DBConnection;
 
 /**
  * 
- * @author Pavel Šeda (154208)
+ * @author Pavel Å eda (154208)
  *
  */
 public class UpdateQueries {
@@ -16,13 +16,13 @@ public class UpdateQueries {
   public UpdateQueries() {}
 
   /**
-   * Template metoda, do které se dá vkládat libovolnı SQL UPDATE pøíkaz.
+   * Template metoda, do kterÃ© se dÃ¡ vklÃ¡dat libovolnÃ½ SQL UPDATE pÅ™Ã­kaz.
    * 
-   * POZN: není vhodné implementovat své metody tímto zpùsobem, daleko vhodnìjší je implementovat
-   * konkrétní metody (napø. updateUserById() pomocí PreparedStatements, do kterıch vkládáme
-   * konkrétní parametry)
+   * POZN: nenÃ­ vhodnÃ© implementovat svÃ© metody tÃ­mto zpÅ¯sobem, daleko vhodnÄ›jÅ¡Ã­ je implementovat
+   * konkrÃ©tnÃ­ metody (napÅ™. updateUserById() pomocÃ­ PreparedStatements, do kterÃ½ch vklÃ¡dÃ¡me
+   * konkrÃ©tnÃ­ parametry)
    * 
-   * @param updateQuery øetìzec pøedstavující pøíkaz UPDATE
+   * @param updateQuery Å™etÄ›zec pÅ™edstavujÃ­cÃ­ pÅ™Ã­kaz UPDATE
    */
   public void performUpdateQuery(String updateQuery) {
     if (updateQuery == null) {
@@ -40,14 +40,14 @@ public class UpdateQueries {
   }
 
   /**
-   * Doplòte pøíkaz update20PercentOfSalary, tak abyste pøidali danému zamìstnanci 20% jeho platu
+   * DoplÅˆte pÅ™Ã­kaz update20PercentOfSalary, tak abyste pÅ™idali danÃ©mu zamÄ›stnanci 20% jeho platu
    * 
-   * POZN: Opìt napištì SQL pøíkaz tak, abyste vyuili PreparedStatements (=> pøíkaz musí obsahovat
+   * POZN: OpÄ›t napiÅ¡tÄ› SQL pÅ™Ã­kaz tak, abyste vyuÅ¾ili PreparedStatements (=> pÅ™Ã­kaz musÃ­ obsahovat
    * WHERE email = ?)
    * 
-   * @param email vstupní parametr, kterı je pøi volání nastaven na hodnotu:
-   *        myname@stud.feec.vutbr.cz (jde pouze o ukázkovı pøíklad u uivatele, kterı je zanesen v
-   *        DB a má uveden plat)
+   * @param email vstupnÃ­ parametr, kterÃ½ je pÅ™i volÃ¡nÃ­ nastaven na hodnotu:
+   *        myname@stud.feec.vutbr.cz (jde pouze o ukÃ¡zkovÃ½ pÅ™Ã­klad u uÅ¾ivatele, kterÃ½ je zanesen v
+   *        DB a mÃ¡ uveden plat)
    */
   public void increase20PercentOfSalary(String email) {
     if (email == null) {
@@ -57,7 +57,7 @@ public class UpdateQueries {
     }
     Connection conn = DBConnection.getDBConnection();
 
-    String update20PercentOfSalary = "";
+    String update20PercentOfSalary = "UPDATE user SET salary = salary + (salary*0.2) WHERE user.email = ?";
 
     try (PreparedStatement prStmt = conn.prepareStatement(update20PercentOfSalary);) {
       prStmt.setString(1, email);

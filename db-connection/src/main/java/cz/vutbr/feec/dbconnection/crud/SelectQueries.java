@@ -10,7 +10,7 @@ import cz.vutbr.feec.dbconnection.dbconn.DBConnection;
 
 /**
  * 
- * @author Pavel Šeda (154208)
+ * @author Pavel Å eda (154208)
  *
  */
 public class SelectQueries {
@@ -18,16 +18,16 @@ public class SelectQueries {
   public SelectQueries() {}
 
   /**
-   * Template metoda, do které se dá vkládat libovolnı SQL SELECT pøíkaz. Tento template je ukázka
-   * pouití PreparedStatements, co je v urèitıch pøípadech rychlejší alternativa ke Statements,
-   * protoe se SQL pøíkazy pøedkompilovávají a také je to ochrana proti SQL Injection viz.
+   * Template metoda, do kterÃ© se dÃ¡ vklÃ¡dat libovolnÃ½ SQL SELECT pÅ™Ã­kaz. Tento template je ukÃ¡zka
+   * pouÅ¾itÃ­ PreparedStatements, coÅ¾ je v urÄitÃ½ch pÅ™Ã­padech rychlejÅ¡Ã­ alternativa ke Statements,
+   * protoÅ¾e se SQL pÅ™Ã­kazy pÅ™edkompilovÃ¡vajÃ­ a takÃ© je to ochrana proti SQL Injection viz.
    * https://xacker.files.wordpress.com/2010/12/sql_injection.png
    * 
-   * POZN: není vhodné implementovat své metody tímto zpùsobem, daleko vhodnìjší je implementovat
-   * konkrétní metody (napø. getAllUsers() pomocí PreparedStatements, do kterıch vkládáme konkrétní
+   * POZN: nenÃ­ vhodnÃ© implementovat svÃ© metody tÃ­mto zpÅ¯sobem, daleko vhodnÄ›jÅ¡Ã­ je implementovat
+   * konkrÃ©tnÃ­ metody (napÅ™. getAllUsers() pomocÃ­ PreparedStatements, do kterÃ½ch vklÃ¡dÃ¡me konkrÃ©tnÃ­
    * parametry)
    * 
-   * @param selectQuery øetìzec pøedstavující pøíkaz SELECT
+   * @param selectQuery Å™etÄ›zec pÅ™edstavujÃ­cÃ­ pÅ™Ã­kaz SELECT
    */
   public void performPreparedStatementSelect(String selectQuery) {
     if (selectQuery == null) {
@@ -49,11 +49,11 @@ public class SelectQueries {
   }
 
   /**
-   * Template metoda, do které se dá vkládat libovolnı SQL SELECT pøíkaz. Tento template je ukázka
-   * pouití PreparedStatements
+   * Template metoda, do kterÃ© se dÃ¡ vklÃ¡dat libovolnÃ½ SQL SELECT pÅ™Ã­kaz. Tento template je ukÃ¡zka
+   * pouÅ¾itÃ­ PreparedStatements
    * 
-   * POZN: není vhodné implementovat své metody tímto zpùsobem, daleko vhodnìjší je implementovat
-   * konkrétní metody (napø. getAllUsers() pomocí PreparedStatements, do kterıch vkládáme konkrétní
+   * POZN: nenÃ­ vhodnÃ© implementovat svÃ© metody tÃ­mto zpÅ¯sobem, daleko vhodnÄ›jÅ¡Ã­ je implementovat
+   * konkrÃ©tnÃ­ metody (napÅ™. getAllUsers() pomocÃ­ PreparedStatements, do kterÃ½ch vklÃ¡dÃ¡me konkrÃ©tnÃ­
    * parametry)
    * 
    */
@@ -112,7 +112,7 @@ public class SelectQueries {
       prStmt.setString(1, email);
       ResultSet rs = prStmt.executeQuery();
       if (rs.next())
-        System.out.println("Email uivatele je: " + rs.getString("email") + " plat uivatele je: "
+        System.out.println("Email uÅ¾ivatele je: " + rs.getString("email") + " plat uÅ¾ivatele je: "
             + rs.getString("salary"));
     } catch (SQLException e) {
       e.printStackTrace();
@@ -120,16 +120,16 @@ public class SelectQueries {
   }
 
   /**
-   * doplòte String selectAlluserEmailNameAndSurname, tak aby se vypsal email, jméno a pøíjmení
-   * všech uivatelù v databázi
+   * doplÅˆte String selectAlluserEmailNameAndSurname, tak aby se vypsal email, jmÃ©no a pÅ™Ã­jmenÃ­
+   * vÅ¡ech uÅ¾ivatelÅ¯ v databÃ¡zi
    * 
-   * POZN: Pøíkaz SELECT * FROM User (není správnì, protoe ten by do objektu ResultSet vrátil
-   * všechny sloupce tabulky (I kdy by "naoko" díky implementovanım vıpisùm vypsal pouze email,
+   * POZN: PÅ™Ã­kaz SELECT * FROM User (nenÃ­ sprÃ¡vnÄ›, protoÅ¾e ten by do objektu ResultSet vrÃ¡til
+   * vÅ¡echny sloupce tabulky (I kdyÅ¾ by "naoko" dÃ­ky implementovanÃ½m vÃ½pisÅ¯m vypsal pouze email,
    * name a surname
    */
   public void getAllUserEmailAndNameAndSurname() {
     Connection conn = DBConnection.getDBConnection();
-    String selectAlluserEmailNameAndSurname = "";
+    String selectAlluserEmailNameAndSurname = "SELECT email, name, surname FROM user";
 
     try (PreparedStatement prStmt = conn.prepareStatement(selectAlluserEmailNameAndSurname);
         ResultSet rs = prStmt.executeQuery()) {
@@ -143,7 +143,7 @@ public class SelectQueries {
   }
 
   /**
-   * prostudujte si tuto metodu nebo následující metodu "getAllUsersWithRoleUserById" a všimìte si,
+   * prostudujte si tuto metodu nebo nÃ¡sledujÃ­cÃ­ metodu "getAllUsersWithRoleUserById" a vÅ¡imÄ›te si,
    * jak pracuje JOIN tabulek
    */
   public void getAllUsersWithRoleUser() {
@@ -182,22 +182,32 @@ public class SelectQueries {
   }
 
   /**
-   * Doplòte celou implementaci k získání vıpisu všech rolí v DB.
+   * DoplÅˆte celou implementaci k zÃ­skÃ¡nÃ­ vÃ½pisu vÅ¡ech rolÃ­ v DB.
    * 
-   * HINT: podívejte se na strukturu jinıch metod v této tøídì popøípadì se inspirujte na internetu
-   * napø.: https://www.mkyong.com/jdbc/jdbc-preparestatement-example-select-list-of-the-records/
+   * HINT: podÃ­vejte se na strukturu jinÃ½ch metod v tÃ©to tÅ™Ã­dÄ› popÅ™Ã­padÄ› se inspirujte na internetu
+   * napÅ™.: https://www.mkyong.com/jdbc/jdbc-preparestatement-example-select-list-of-the-records/
    */
   public void printAllRolesInDB() {
-    // 1. získejte connection k databázi
-    // 2. vytvoøte SQL pøíkaz k získání všech rolí v DB
-    // 3. vlote tento pøíkaz jako prepareStatement k získané connection k databázi
+    // 1. zÃ­skejte connection k databÃ¡zi
+    // 2. vytvoÅ™te SQL pÅ™Ã­kaz k zÃ­skÃ¡nÃ­ vÅ¡ech rolÃ­ v DB
+    // 3. vloÅ¾te tento pÅ™Ã­kaz jako prepareStatement k zÃ­skanÃ© connection k databÃ¡zi
     // 4. vyvolejte tento PreparedStatement
-    // 5. ulote vısledek do ResultSetu
-    // 6. pøes cyklus projdìte vısledek ResultSetu a vypište role v systému (pro získání správné
-    // kolonky se podívejte na návrh databáze, abyste znali název sloupce (popøípadì lze ještì
-    // získat data ze sloupce poøadovım èíslem (zaèínajíc od 1)))
+    // 5. uloÅ¾te vÃ½sledek do ResultSetu
+    // 6. pÅ™es cyklus projdÄ›te vÃ½sledek ResultSetu a vypiÅ¡te role v systÃ©mu (pro zÃ­skÃ¡nÃ­ sprÃ¡vnÃ©
+    // kolonky se podÃ­vejte na nÃ¡vrh databÃ¡ze, abyste znali nÃ¡zev sloupce (popÅ™Ã­padÄ› lze jeÅ¡tÄ›
+    // zÃ­skat data ze sloupce poÅ™adovÃ½m ÄÃ­slem (zaÄÃ­najÃ­c od 1)))
 
-    // tyto operace obalte v try-catch bloku popøípadì v try-with-resources bloku
+    // tyto operace obalte v try-catch bloku popÅ™Ã­padÄ› v try-with-resources bloku
+
+    Connection conn = DBConnection.getDBConnection();
+    try (PreparedStatement prStmt = conn.prepareStatement("SELECT * FROM role");
+        ResultSet rs = prStmt.executeQuery()) {
+      while (rs.next()) {
+        System.out.println(rs.getString("id_role") + " : " + rs.getString("name"));
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
   }
 }
 

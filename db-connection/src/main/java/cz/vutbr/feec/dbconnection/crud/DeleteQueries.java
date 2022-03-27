@@ -8,7 +8,7 @@ import cz.vutbr.feec.dbconnection.dbconn.DBConnection;
 
 /**
  * 
- * @author Pavel Šeda (154208)
+ * @author Pavel Å eda (154208)
  *
  */
 public class DeleteQueries {
@@ -16,13 +16,13 @@ public class DeleteQueries {
   public DeleteQueries() {}
 
   /**
-   * Template metoda, do které se dá vkládat libovolnı SQL DELETE pøíkaz.
+   * Template metoda, do kterÃ© se dÃ¡ vklÃ¡dat libovolnÃ½ SQL DELETE pÅ™Ã­kaz.
    * 
-   * POZN: není vhodné implementovat své metody tímto zpùsobem, daleko vhodnìjší je implementovat
-   * konkrétní metody (napø. deleteUserById(String email) pomocí PreparedStatements, do kterıch
-   * vkládáme konkrétní parametry)
+   * POZN: nenÃ­ vhodnÃ© implementovat svÃ© metody tÃ­mto zpÅ¯sobem, daleko vhodnÄ›jÅ¡Ã­ je implementovat
+   * konkrÃ©tnÃ­ metody (napÅ™. deleteUserById(String email) pomocÃ­ PreparedStatements, do kterÃ½ch
+   * vklÃ¡dÃ¡me konkrÃ©tnÃ­ parametry)
    * 
-   * @param deleteQuery øetìzec pøedstavující pøíkaz DELETE
+   * @param deleteQuery Å™etÄ›zec pÅ™edstavujÃ­cÃ­ pÅ™Ã­kaz DELETE
    */
   public void performDeleteQuery(String deleteQuery) {
     if (deleteQuery == null) {
@@ -41,13 +41,13 @@ public class DeleteQueries {
 
   //@formatter:off
   /**
-   * Úkol: Doplòte promìnnou userToDelete pøíkazem DELETE ..., kterı vymae uivatele podle emailu, kterı je pøedán v parametru metody
+   * Ãškol: DoplÅˆte promÄ›nnou userToDelete pÅ™Ã­kazem DELETE ..., kterÃ½ vymaÅ¾e uÅ¾ivatele podle emailu, kterÃ½ je pÅ™edÃ¡n v parametru metody
    * 
-   * HINT: V této metodì jsou vyuity preparedStatements, take se parametr emailu nastaví a pozdìji pøíkazem prStmt.setString(1, email). 
-   * Pro pøedstavu, jak se píší prepared statements se podívejte na následující odkaz: 
+   * HINT: V tÃ©to metodÄ› jsou vyuÅ¾ity preparedStatements, takÅ¾e se parametr emailu nastavÃ­ aÅ¾ pozdÄ›ji pÅ™Ã­kazem prStmt.setString(1, email). 
+   * Pro pÅ™edstavu, jak se pÃ­Å¡Ã­ prepared statements se podÃ­vejte na nÃ¡sledujÃ­cÃ­ odkaz: 
    * https://www.mkyong.com/jdbc/jdbc-preparestatement-example-delete-a-record/
    * 
-   * @param email na základì, kterého je vymazán danı uivatel
+   * @param email na zÃ¡kladÄ›, kterÃ©ho je vymazÃ¡n danÃ½ uÅ¾ivatel
    */
   //@formatter:on
   public void deleteUserByEmail(String email) {
@@ -58,12 +58,12 @@ public class DeleteQueries {
     }
     Connection conn = DBConnection.getDBConnection();
 
-    String userToDelete = "";
+    String userToDelete = "DELETE FROM user WHERE user.email = ?";
 
     try (PreparedStatement prStmt = conn.prepareStatement(userToDelete);) {
       prStmt.setString(1, email);
       int rowsDeleted = prStmt.executeUpdate();
-      System.out.println("Vaším pøíkazem byl vymazán následující poèet uivatelù: " + rowsDeleted);
+      System.out.println("VaÅ¡Ã­m pÅ™Ã­kazem byl vymazÃ¡n nÃ¡sledujÃ­cÃ­ poÄet uÅ¾ivatelÅ¯: " + rowsDeleted);
     } catch (SQLException e) {
       e.printStackTrace();
     }

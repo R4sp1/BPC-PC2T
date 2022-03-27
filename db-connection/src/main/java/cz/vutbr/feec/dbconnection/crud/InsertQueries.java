@@ -8,7 +8,7 @@ import cz.vutbr.feec.dbconnection.dbconn.DBConnection;
 
 /**
  * 
- * @author Pavel Šeda (154208)
+ * @author Pavel Å eda (154208)
  *
  */
 public class InsertQueries {
@@ -17,13 +17,13 @@ public class InsertQueries {
 
 
   /**
-   * Template metoda, do které se dá vkládat libovolnı SQL INSERT pøíkaz.
+   * Template metoda, do kterÃ© se dÃ¡ vklÃ¡dat libovolnÃ½ SQL INSERT pÅ™Ã­kaz.
    * 
-   * POZN: není vhodné implementovat své metody tímto zpùsobem, daleko vhodnìjší je implementovat
-   * konkrétní metody (napø. insertNewUser(String email, char[] password) pomocí PreparedStatements,
-   * do kterıch vkládáme konkrétní parametry)
+   * POZN: nenÃ­ vhodnÃ© implementovat svÃ© metody tÃ­mto zpÅ¯sobem, daleko vhodnÄ›jÅ¡Ã­ je implementovat
+   * konkrÃ©tnÃ­ metody (napÅ™. insertNewUser(String email, char[] password) pomocÃ­ PreparedStatements,
+   * do kterÃ½ch vklÃ¡dÃ¡me konkrÃ©tnÃ­ parametry)
    * 
-   * @param insertQuery øetìzec pøedstavující pøíkaz INSERT
+   * @param insertQuery Å™etÄ›zec pÅ™edstavujÃ­cÃ­ pÅ™Ã­kaz INSERT
    */
   public void performInsertQuery(String insertQuery) {
     if (insertQuery == null) {
@@ -34,29 +34,29 @@ public class InsertQueries {
     Connection conn = DBConnection.getDBConnection();
     try (PreparedStatement prStmt = conn.prepareStatement(insertQuery);) {
       int rowsInserted = prStmt.executeUpdate();
-      // System.out.println("Bylo vloeno uivatelù: " + rowsInserted);
-      System.out.println("Byl vloen uivatel s emailem: " + "myname123@stud.feec.vutbr.cz");
+      // System.out.println("Bylo vloÅ¾eno uÅ¾ivatelÅ¯: " + rowsInserted);
+      System.out.println("Byl vloÅ¾en uÅ¾ivatel s emailem: " + "myname123@stud.feec.vutbr.cz");
     } catch (SQLException e) {
-      System.out.println("Uivatel s emailem: " + "myname123@stud.feec.vutbr.cz "
-          + "ji byl vloen nemusíte jej vkládat znovu");
+      System.out.println("UÅ¾ivatel s emailem: " + "myname123@stud.feec.vutbr.cz "
+          + "jiÅ¾ byl vloÅ¾en nemusÃ­te jej vklÃ¡dat znovu");
       // e.printStackTrace();
     }
   }
 
   /**
-   * Úkol: Vaším úkolem je pøiøadit INSERT pøíkaz do promìnné insertUser, tak aby se vytvoøil novı
-   * uivatel dle zadanıch parametrù
+   * Ãškol: VaÅ¡Ã­m Ãºkolem je pÅ™iÅ™adit INSERT pÅ™Ã­kaz do promÄ›nnÃ© insertUser, tak aby se vytvoÅ™il novÃ½
+   * uÅ¾ivatel dle zadanÃ½ch parametrÅ¯
    * 
-   * HINT: V této metodì jsou vyuity preparedStatements, take se parametr emailu nastaví a
-   * pozdìji pøíkazem prStmt.setString(1, email)... Pro pøedstavu, jak se píší prepared statements
-   * se podívejte na následující odkaz:
+   * HINT: V tÃ©to metodÄ› jsou vyuÅ¾ity preparedStatements, takÅ¾e se parametr emailu nastavÃ­ aÅ¾
+   * pozdÄ›ji pÅ™Ã­kazem prStmt.setString(1, email)... Pro pÅ™edstavu, jak se pÃ­Å¡Ã­ prepared statements
+   * se podÃ­vejte na nÃ¡sledujÃ­cÃ­ odkaz:
    * https://www.mkyong.com/jdbc/jdbc-preparestatement-example-insert-a-record/
    * 
-   * @param email uivatele
-   * @param name uivatele
-   * @param surname uivatele
-   * @param age uivatele
-   * @param salary uivatele
+   * @param email uÅ¾ivatele
+   * @param name uÅ¾ivatele
+   * @param surname uÅ¾ivatele
+   * @param age uÅ¾ivatele
+   * @param salary uÅ¾ivatele
    */
   public void insertNewUser(String email, String name, String surname) {
     if (email == null || name == null || surname == null)
@@ -64,7 +64,7 @@ public class InsertQueries {
 
     Connection conn = DBConnection.getDBConnection();
 
-    String insertUser = "";
+    String insertUser = "INSERT INTO user " + "(email,name,surname)" + "VALUES(?,?,?)";
 
     try (PreparedStatement prStmt = conn.prepareStatement(insertUser)) {
       prStmt.setString(1, email);
@@ -72,9 +72,9 @@ public class InsertQueries {
       prStmt.setString(3, surname);
 
       prStmt.executeUpdate();
-      System.out.println("Novı uivatel byl vloen do databáze!");
+      System.out.println("NovÃ½ uÅ¾ivatel byl vloÅ¾en do databÃ¡ze!");
     } catch (SQLException e) {
-      System.out.println("Uivatel u byl vloen nebo jste zadali špatnì SQL pøíkaz INSERT");
+      System.out.println("UÅ¾ivatel uÅ¾ byl vloÅ¾en nebo jste zadali Å¡patnÄ› SQL pÅ™Ã­kaz INSERT");
       // e.printStackTrace();
     }
   }
