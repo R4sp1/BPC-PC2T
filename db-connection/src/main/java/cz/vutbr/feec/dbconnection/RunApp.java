@@ -113,11 +113,8 @@ public class RunApp {
 				// DB
 				roles.printAllRolesInDB();
 				break;
-			case 8:
-				run = false;
-				DBConnection.closeConnection();
-				break;
-			default:
+				case 8:
+				default:
 				run = false;
 				DBConnection.closeConnection();
 				break;

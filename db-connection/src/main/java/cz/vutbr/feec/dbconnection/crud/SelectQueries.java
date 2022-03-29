@@ -199,9 +199,9 @@ public class SelectQueries {
 
     // tyto operace obalte v try-catch bloku popřípadě v try-with-resources bloku
 
-    Connection conn = DBConnection.getDBConnection();
-    try (PreparedStatement prStmt = conn.prepareStatement("SELECT * FROM role");
-        ResultSet rs = prStmt.executeQuery()) {
+    Connection DB = DBConnection.getDBConnection();
+    try (PreparedStatement pstmt = DB.prepareStatement("SELECT * FROM role");
+        ResultSet rs = pstmt.executeQuery()) {
       while (rs.next()) {
         System.out.println(rs.getString("id_role") + " : " + rs.getString("name"));
       }

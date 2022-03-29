@@ -64,7 +64,7 @@ public class InsertQueries {
 
     Connection conn = DBConnection.getDBConnection();
 
-    String insertUser = "INSERT INTO user " + "(email,name,surname)" + "VALUES(?,?,?)";
+    String insertUser = "INSERT INTO user (email,name,surname) VALUES(?,?,?)";
 
     try (PreparedStatement prStmt = conn.prepareStatement(insertUser)) {
       prStmt.setString(1, email);
