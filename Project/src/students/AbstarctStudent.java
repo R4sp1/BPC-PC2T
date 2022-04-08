@@ -6,16 +6,17 @@ public abstract class AbstarctStudent {
 
     private String Name;
     private String Surname;
-    private int YearOfBirth;
+    private String DateOfBirth;
     private double StudyAverage;
     private ArrayList<Integer> marksList = new ArrayList<Integer>();
 
+
     public abstract String Specialization();
 
-    public AbstarctStudent(String name, String surname, int dateOfBirth, ArrayList<Integer> marksList) {
+    public AbstarctStudent(String name, String surname, String dateOfBirth, ArrayList<Integer> marksList) {
         Name = name;
         Surname = surname;
-        YearOfBirth = dateOfBirth;
+        DateOfBirth = dateOfBirth;
         this.marksList = marksList;
     }
 
@@ -35,12 +36,12 @@ public abstract class AbstarctStudent {
         Surname = surname;
     }
 
-    public int getYearOfBirth() {
-        return YearOfBirth;
+    public String getDateOfBirth() {
+        return DateOfBirth;
     }
 
-    public void setYearOfBirth(int yearOfBirth) {
-        YearOfBirth = yearOfBirth;
+    public void setDateOfBirth(String dateOfBirth) {
+        DateOfBirth = dateOfBirth;
     }
 
     public void setMarksList(ArrayList<Integer> marksList) {

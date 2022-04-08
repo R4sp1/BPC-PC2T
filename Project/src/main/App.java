@@ -1,35 +1,39 @@
 package main;
 
 
-import students.AbstarctStudent;
-import students.TechStudent;
+import students.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class App {
 
 
     public static void main(String[] args) {
 
-        ArrayList<Integer> cars = new ArrayList<Integer>();
-        cars.add(1);
-        cars.add(2);
-        cars.add(3);
-        cars.add(4);
+        ArrayList<Integer> marks = new ArrayList<Integer>();
+        marks.add(1);
+        marks.add(2);
+        marks.add(3);
+        marks.add(4);
 
 
-        AbstarctStudent[] field = new AbstarctStudent[1];
-        field[0] = new TechStudent("Jan", "Hruska", 1988, cars);
+        AbstarctStudent[] field = new AbstarctStudent[3];
+        field[0] = new TechStudent("Tech", "Student", "01.01.1988", marks);
+        field[1] = new HumaStudent("Huma", "Student", "30.01.2001", marks);
+        field[2] = new CombiStudent("Kombi", "Student", "30.01.1988", marks);
 
 
         for(int i = 0; i < field.length; i++){
 
             if(field[i] instanceof TechStudent){
 
-                System.out.println("Jmeno: " + field[i].getName() + " Prijmeni: " + field[i].getSurname() + " Prumer: " + field[i].getStudyAverage() + " " + ((TechStudent) field[i]).isLeapYear());
+                System.out.println(field[i].getName() + " " + field[i].getSurname() + " Je rok narozeni prestupny? " + ((TechStudent) field[i]).isLeapYear());
 
+            }else if(field[i] instanceof HumaStudent){
+                System.out.println(field[i].getName() + " " + field[i].getSurname() + " Znameni: " + ((HumaStudent) field[i]).getZodiacSign());
             }else{
-                System.out.println(field[i].getName() + " cena: " + field[i].getName());
+                System.out.println(field[i].getName() + " " + field[i].getSurname() + " Znameni: " + ((CombiStudent) field[i]).getZodiacSign() + " Je rok narozeni prestupny? " + ((CombiStudent) field[i]).isLeapYear());
             }
         }
     }

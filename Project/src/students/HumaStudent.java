@@ -2,21 +2,21 @@ package students;
 
 import java.util.ArrayList;
 
-public class TechStudent extends AbstarctStudent {
+public class HumaStudent extends AbstarctStudent {
 
 
-    public TechStudent(String name, String surname, String dateOfBirth, ArrayList<Integer> marksList) {
+    public HumaStudent(String name, String surname, String dateOfBirth, ArrayList<Integer> marksList) {
         super(name, surname, dateOfBirth, marksList);
     }
 
-    public boolean isLeapYear(){
+    public String getZodiacSign(){
         SpecializationLogic st = new SpecializationLogic();
         st.DateOfBirth = getDateOfBirth();
-        return st.isLeapYear();
+        return st.getZodiacSign();
     }
 
     @Override
     public String Specialization() {
-        return "Student technického oboru";
+        return "Student humanitniho oboru";
     }
 }
