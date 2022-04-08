@@ -1,6 +1,7 @@
 package students;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
@@ -9,7 +10,7 @@ public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
     protected String Surname;
     private String DateOfBirth;
     private double StudyAverage;
-    private ArrayList<Integer> marksList = new ArrayList<Integer>();
+    protected ArrayList<Integer> marksList = new ArrayList<Integer>();
 
     public StudentType studentType;
 
@@ -19,11 +20,10 @@ public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
 
     public AbstarctStudent(){}
 
-    public AbstarctStudent(String name, String surname, String dateOfBirth, ArrayList<Integer> marksList) {
+    public AbstarctStudent(String name, String surname, String dateOfBirth) {
         Name = name;
         Surname = surname;
         DateOfBirth = dateOfBirth;
-        this.marksList = marksList;
     }
 
     public String getName() {
@@ -52,6 +52,10 @@ public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
 
     public void setMarksList(ArrayList<Integer> marksList) {
         this.marksList = marksList;
+    }
+
+    public void addMarks(ArrayList<Integer> marks) {
+        this.marksList = marks;
     }
 
     public double getStudyAverage() {

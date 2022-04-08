@@ -1,16 +1,17 @@
 package students;
 
-import javax.sql.rowset.spi.TransactionalWriter;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
 import static students.StudentType.TECH;
 
+
 public class TechStudent extends AbstarctStudent{
 
 
-    public TechStudent(String name, String surname, String dateOfBirth, ArrayList<Integer> marksList) {
-        super(name, surname, dateOfBirth, marksList);
+    public TechStudent(String name, String surname, String dateOfBirth) {
+        super(name, surname, dateOfBirth);
     }
 
 
@@ -19,6 +20,7 @@ public class TechStudent extends AbstarctStudent{
         st.dateOfBirth = getDateOfBirth();
         return st.isLeapYear();
     }
+
 
     @Override
     public String Specialization() {

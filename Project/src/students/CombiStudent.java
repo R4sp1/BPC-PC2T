@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class CombiStudent extends AbstarctStudent{
 
 
-    public CombiStudent(String name, String surname, String dateOfBirth, ArrayList<Integer> marksList) {
-        super(name, surname, dateOfBirth, marksList);
+    public CombiStudent(String name, String surname, String dateOfBirth) {
+        super(name, surname, dateOfBirth);
     }
 
 
