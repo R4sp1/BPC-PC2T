@@ -1,17 +1,23 @@
 package students;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-public abstract class AbstarctStudent {
+public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
 
     private String Name;
-    private String Surname;
+    protected String Surname;
     private String DateOfBirth;
     private double StudyAverage;
     private ArrayList<Integer> marksList = new ArrayList<Integer>();
 
+    public StudentType studentType;
+
 
     public abstract String Specialization();
+    public abstract String SpecializationInfo();
+
+    public AbstarctStudent(){}
 
     public AbstarctStudent(String name, String surname, String dateOfBirth, ArrayList<Integer> marksList) {
         Name = name;
@@ -55,5 +61,31 @@ public abstract class AbstarctStudent {
         }
         StudyAverage = ConStudyAverage/marksList.size();
         return StudyAverage;
+    }
+
+    public StudentType getStudentType() {
+        return studentType;
+    }
+
+    public void setStudentType(StudentType studentType) {
+        this.studentType = studentType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AbstarctStudent that = (AbstarctStudent) o;
+        return Surname.equals(that.Surname);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Surname);
+    }
+
+    @Override
+    public int compareTo(AbstarctStudent o) {
+        return this.Surname.compareTo(o.getSurname());
     }
 }

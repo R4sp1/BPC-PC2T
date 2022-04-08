@@ -1,27 +1,21 @@
 package students;
 
-
 public class SpecializationLogic {
-    public String DateOfBirth;
-
+    protected String dateOfBirth;
     public SpecializationLogic() {
     }
 
-
     public boolean isLeapYear() {
-
-        String[] values = DateOfBirth.split("\\.");
+        String[] values = dateOfBirth.split("\\.");
         int year = Integer.parseInt(values[2]);
 
         return year % 4 == 0;
     }
 
     public String getZodiacSign() {
-
-        String[] values = DateOfBirth.split("\\.");
+        String[] values = dateOfBirth.split("\\.");
         int day = Integer.parseInt(values[0]);
         int month = Integer.parseInt(values[1]);
-
         String zodiacSign = "";
 
         if (month == 1) {
