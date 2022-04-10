@@ -5,10 +5,9 @@ import java.util.ArrayList;
 public class CombiStudent extends AbstarctStudent{
 
 
-    public CombiStudent(String name, String surname, String dateOfBirth) {
-        super(name, surname, dateOfBirth);
+    public CombiStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType) {
+        super(name, surname, dateOfBirth, idx, studentType);
     }
-
 
     public boolean isLeapYear(){
         SpecializationLogic st = new SpecializationLogic();

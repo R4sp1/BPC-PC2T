@@ -5,11 +5,9 @@ import java.util.ArrayList;
 public class HumaStudent extends AbstarctStudent {
 
 
-    public HumaStudent(String name, String surname, String dateOfBirth) {
-        super(name, surname, dateOfBirth);
+    public HumaStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType) {
+        super(name, surname, dateOfBirth, idx, studentType);
     }
-
-
 
     public String getZodiacSign(){
         SpecializationLogic st = new SpecializationLogic();

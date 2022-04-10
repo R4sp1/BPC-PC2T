@@ -10,32 +10,83 @@ public class App {
 
     public static void main(String[] args) {
 
+        Students s = new Students();
+        TechStudent tss = new TechStudent();
+        List<TechStudent> ts = new ArrayList<>();
+
         Scanner sc = new Scanner(System.in);
-        Students s = new TechStudent();
-        int idx;
-        float prumer;
+        int idx = 0;
+        String name;
+        String surname;
+        String date;
+        StudentType st;
         int volba;
         boolean run = true;
         while (run) {
             System.out.println("Vyberte pozadovanou cinnost:");
-            System.out.println("1 .. vlozeni noveho studenta");
-            System.out.println("2 .. nastaveni prumeru studenta");
-            System.out.println("3 .. ukonceni aplikace");
+            System.out.println("1 .. vlozeni noveho studenta technickeho oboru");
+            System.out.println("2 .. Nastaveni znamek studentu");
+            System.out.println("3 .. vypis studentu");
+            System.out.println("4 .. ukonceni aplikace");
+            volba = sc.nextInt();
             switch (volba) {
                 case 1:
-                    mojeDatabaze.setStudent();
+                    System.out.println("Zadejte JMENO PRIJMENI DATUM studenta! (DATUM urcuje datum narozeni ve formatu: dd.mm.rrrr)");
+                    name = sc.next();
+                    surname = sc.next();
+                    date = sc.next();
+                    idx += 1;
+                    st = StudentType.TECH;
+                    TechStudent k = new TechStudent(name, surname, date, idx, st);
+                    ts.add(idx-1, k);
+                    s.setListOfTechStudent(ts);
                     break;
                 case 2:
-                    System.out.println("Zadejte index a prumer studenta");
-                    idx = pouzeCelaCisla(sc);
-                    prumer = pouzeCisla(sc);
-                    mojeDatabaze.setPrumer(idx, prumer);
+                    System.out.println("Zadejte ID studenta kteremu chcete udelit znamku. ");
+                    int ID;
+                    int IDs;
+                    ArrayList<Integer> m1 = new ArrayList<>();
+                    ID = sc.nextInt();
+                    int mark;
+                    boolean caseRun = true;
+                    while (caseRun) {
+                        System.out.println("Zadejte znamku: ");
+                        mark = sc.nextInt();
+                        m1.add(mark);
+                        System.out.println("Znamka zadana! Chcete zadat dalsi znamku? 1 = ano, 0 = ne");
+                        volba = sc.nextInt();
+                        switch (volba) {
+                            case 1:
+                                caseRun = true;
+                                break;
+                            case 0:
+                                caseRun = false;
+                                break;
+                        }
+                    }
+
+                    for (int i = 0; i < ts.size(); i++) {
+                        TechStudent A = ts.get(i);
+                        if(ID == A.getIdx()){
+                            ID = i;
+                            break;
+                        }
+                    }
+                    TechStudent A = ts.get(ID);
+                    TechStudent upStudent = new TechStudent(A.getName(),A.getSurname(), A.getDateOfBirth(), A.getIdx(), A.getStudentType(), m1);
+                    ts.set(ID, upStudent);
                     break;
 
                 case 3:
+                    Collections.sort(ts);
+                    s.printAll();
+                    break;
+
+                case 4:
                     run = false;
                     break;
             }
+        }
 
 
 
@@ -56,7 +107,8 @@ public class App {
          */
     }
 
-    public static List<TechStudent> createTech() {
+    /*
+        public static List<TechStudent> createTech() {
         ArrayList<Integer> marks = new ArrayList<Integer>();
         marks.add(1);
         marks.add(2);
@@ -85,4 +137,6 @@ public class App {
         CombiStudent e3 = new CombiStudent("Combi", "A", "01.01.1988");
         return Arrays.asList(e1, e2, e3);
     }
+
+     */
 }

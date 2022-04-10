@@ -2,24 +2,35 @@ package students;
 
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static students.StudentType.TECH;
+import students.Students.*;
 
 
 public class TechStudent extends AbstarctStudent{
 
+    public TechStudent(){
 
-    public TechStudent(String name, String surname, String dateOfBirth) {
-        super(name, surname, dateOfBirth);
     }
 
+    public TechStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, ArrayList<Integer> marksList) {
+        super(name, surname, dateOfBirth, idx, studentType, marksList);
+    }
+
+
+
+    public TechStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType) {
+        super(name, surname, dateOfBirth, idx, studentType);
+    }
 
     public boolean isLeapYear(){
         SpecializationLogic st = new SpecializationLogic();
         st.dateOfBirth = getDateOfBirth();
         return st.isLeapYear();
     }
+
 
 
     @Override
@@ -32,10 +43,12 @@ public class TechStudent extends AbstarctStudent{
         return TECH.getDescription();
     }
 
+
     @Override
     public String toString() {
         return "TechStudent{" +
-                "Name='" + getName() + '\'' +
+                "Index='" + getIdx() + '\'' +
+                ", Name='" + getName() + '\'' +
                 ", Surname='" + getSurname() + '\'' +
                 ", DateOfBirth='" + getDateOfBirth() + '\'' +
                 ", StudyAverage=" + getStudyAverage() +

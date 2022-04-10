@@ -57,15 +57,15 @@ public class Students extends AbstarctStudent {
         this.listOfCombiStudents = listOfCombiStudents;
     }
 
-    public void addCombiStudent(CombiStudent student) {
-        this.listOfCombiStudents.add(student);
-    }
+
 
     public void printAll() {
         System.out.println("List of Tech students");
         listOfTechStudent.forEach(System.out::println);
+
         System.out.println("\nList of Huma students");
         listOfHumaStudents.forEach(System.out::println);
+
         System.out.println("\nList of Combi students");
         listOfCombiStudents.forEach(System.out::println);
     }

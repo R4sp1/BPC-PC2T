@@ -11,8 +11,10 @@ public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
     private String DateOfBirth;
     private double StudyAverage;
     protected ArrayList<Integer> marksList = new ArrayList<Integer>();
+    protected int idx;
 
     public StudentType studentType;
+
 
 
     public abstract String Specialization();
@@ -20,10 +22,21 @@ public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
 
     public AbstarctStudent(){}
 
-    public AbstarctStudent(String name, String surname, String dateOfBirth) {
+    public AbstarctStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType) {
         Name = name;
         Surname = surname;
         DateOfBirth = dateOfBirth;
+        this.idx = idx;
+        this.studentType = studentType;
+    }
+
+    public AbstarctStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, ArrayList<Integer> marksList) {
+        Name = name;
+        Surname = surname;
+        DateOfBirth = dateOfBirth;
+        this.idx = idx;
+        this.studentType = studentType;
+        this.marksList = marksList;
     }
 
     public String getName() {
@@ -73,6 +86,15 @@ public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
 
     public void setStudentType(StudentType studentType) {
         this.studentType = studentType;
+    }
+
+
+    public void setIdx(int idx) {
+        this.idx = idx;
+    }
+
+    public int getIdx() {
+        return idx;
     }
 
     @Override
