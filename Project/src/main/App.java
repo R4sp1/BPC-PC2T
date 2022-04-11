@@ -7,12 +7,28 @@ import java.util.*;
 
 public class App {
 
+    public static int justInt(Scanner sc) {
+        int num = 0;
+        try {
+            num = sc.nextInt();
+        } catch (Exception e) {
+            System.out.println("Nastala vyjimka typu " + e.toString());
+            System.out.println("Zadejte prosim cele cislo ");
+            sc.nextLine();
+            num = justInt(sc);
+        }
+        return num;
+    }
+
 
     public static void main(String[] args) {
 
+
+
         Students s = new Students();
-        TechStudent tss = new TechStudent();
         List<TechStudent> ts = new ArrayList<>();
+        List<HumaStudent> hs = new ArrayList<>();
+        List<CombiStudent> cs = new ArrayList<>();
 
         Scanner sc = new Scanner(System.in);
         int idx = 0;
@@ -22,6 +38,7 @@ public class App {
         StudentType st;
         int volba;
         boolean run = true;
+        boolean caseRun = true;
         while (run) {
             System.out.println("Vyberte pozadovanou cinnost:");
             System.out.println("1 .. vlozeni noveho studenta technickeho oboru");
@@ -31,30 +48,60 @@ public class App {
             volba = sc.nextInt();
             switch (volba) {
                 case 1:
-                    System.out.println("Zadejte JMENO PRIJMENI DATUM studenta! (DATUM urcuje datum narozeni ve formatu: dd.mm.rrrr)");
-                    name = sc.next();
-                    surname = sc.next();
-                    date = sc.next();
-                    idx += 1;
-                    st = StudentType.TECH;
-                    TechStudent k = new TechStudent(name, surname, date, idx, st);
-                    ts.add(idx-1, k);
+                    while (caseRun){
+                        System.out.println("Jakeho studenta chcete pridat? 1 = Technickeho oboru, 2 = Humanitniho oboru, 3 = Kombinovaneho oboru");
+                        volba = justInt(sc);
+                        System.out.println("Zadejte JMENO PRIJMENI DATUM studenta! (DATUM urcuje datum narozeni ve formatu: dd.mm.rrrr)");
+                        name = sc.next();
+                        surname = sc.next();
+                        date = sc.next();
+                        idx += 1;
+                        switch (volba){
+                            case 1:
+                                st = StudentType.TECH;
+                                TechStudent tStudent = new TechStudent(name, surname, date, idx, st);
+                                ts.add(tStudent);
+                                break;
+                            case 2:
+                                st = StudentType.HUMA;
+                                HumaStudent hStudent = new HumaStudent(name, surname, date, idx, st);
+                                hs.add(hStudent);
+                                break;
+                            case 3:
+                                st = StudentType.COMBI;
+                                CombiStudent cStudent = new CombiStudent(name, surname, date, idx, st);
+                                cs.add(cStudent);
+                                break;
+                        }
+                        System.out.println("Student pridan! Chcete pridat dalsiho studenta? 1 = ano, 0 = ne");
+                        volba = sc.nextInt();
+                        switch (volba) {
+                            case 1:
+                                caseRun = true;
+                                break;
+                            case 0:
+                                caseRun = false;
+                                break;
+                        }
+                    }
+
                     s.setListOfTechStudent(ts);
+                    s.setListOfHumaStudents(hs);
+                    s.setListOfCombiStudents(cs);
                     break;
+
                 case 2:
                     System.out.println("Zadejte ID studenta kteremu chcete udelit znamku. ");
                     int ID;
-                    int IDs;
                     ArrayList<Integer> m1 = new ArrayList<>();
-                    ID = sc.nextInt();
+                    ID = justInt(sc);
                     int mark;
-                    boolean caseRun = true;
                     while (caseRun) {
                         System.out.println("Zadejte znamku: ");
-                        mark = sc.nextInt();
+                        mark = justInt(sc);
                         m1.add(mark);
                         System.out.println("Znamka zadana! Chcete zadat dalsi znamku? 1 = ano, 0 = ne");
-                        volba = sc.nextInt();
+                        volba = justInt(sc);
                         switch (volba) {
                             case 1:
                                 caseRun = true;
@@ -69,12 +116,35 @@ public class App {
                         TechStudent A = ts.get(i);
                         if(ID == A.getIdx()){
                             ID = i;
+                            A = ts.get(ID);
+                            TechStudent upStudent = new TechStudent(A.getName(),A.getSurname(), A.getDateOfBirth(), A.getIdx(), A.getStudentType(), m1);
+                            ts.set(ID, upStudent);
                             break;
                         }
                     }
-                    TechStudent A = ts.get(ID);
-                    TechStudent upStudent = new TechStudent(A.getName(),A.getSurname(), A.getDateOfBirth(), A.getIdx(), A.getStudentType(), m1);
-                    ts.set(ID, upStudent);
+
+                    for (int i = 0; i < hs.size(); i++) {
+                        HumaStudent B = hs.get(i);
+                        if(ID == B.getIdx()){
+                            ID = i;
+                            B = hs.get(ID);
+                            HumaStudent upStudent = new HumaStudent(B.getName(),B.getSurname(), B.getDateOfBirth(), B.getIdx(), B.getStudentType(), m1);
+                            hs.set(ID, upStudent);
+                            break;
+                        }
+                    }
+
+                    for (int i = 0; i < cs.size(); i++) {
+                        CombiStudent C = cs.get(i);
+                        if(ID == C.getIdx()){
+                            ID = i;
+                            C = cs.get(ID);
+                            CombiStudent upStudent = new CombiStudent(C.getName(),C.getSurname(), C.getDateOfBirth(), C.getIdx(), C.getStudentType(), m1);
+                            cs.set(ID, upStudent);
+                            break;
+                        }
+                    }
+
                     break;
 
                 case 3:

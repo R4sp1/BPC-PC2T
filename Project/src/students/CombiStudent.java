@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 public class CombiStudent extends AbstarctStudent{
 
+    public CombiStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, ArrayList<Integer> marksList) {
+        super(name, surname, dateOfBirth, idx, studentType, marksList);
+    }
 
     public CombiStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType) {
         super(name, surname, dateOfBirth, idx, studentType);
@@ -33,7 +36,8 @@ public class CombiStudent extends AbstarctStudent{
     @Override
     public String toString() {
         return "TechStudent{" +
-                "Name='" + getName() + '\'' +
+                "Index='" + getIdx() + '\'' +
+                ", name='" + getName() + '\'' +
                 ", Surname='" + getSurname() + '\'' +
                 ", DateOfBirth='" + getDateOfBirth() + '\'' +
                 ", StudyAverage=" + getStudyAverage() +
