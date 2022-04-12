@@ -76,9 +76,10 @@ public class Pole {
     // nalezeni indexu nejmensiho hranolu
     int najdiNejmensiObjem()
     {
-        float min=0;
+        float min;
         int idx=0;
-        for (int i=0;i<Hranol.getPocetHranolu();i++)
+        min = mojeHranoly[0].vypoctiObjem();                        // Naplneni konstanty min objemem prvniho hranolu
+        for (int i=1;i<Hranol.getPocetHranolu();i++)
         {
             if (mojeHranoly[i].vypoctiObjem()<min){
                 min=mojeHranoly[i].vypoctiObjem();
