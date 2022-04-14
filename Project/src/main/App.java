@@ -1,8 +1,8 @@
 package main;
 
 
+import database.FileDatabase;
 import students.*;
-
 import java.util.*;
 
 public class App {
@@ -49,7 +49,8 @@ public class App {
             System.out.println("6 .. spusteni dovednosti konkretniho studenta");
             System.out.println("7 .. Vypis obecneho studujniho prumeru v oborech");
             System.out.println("8 .. Vypis celkoveho poctu studentu v oborech");
-            System.out.println("9 .. ukonceni aplikace");
+            System.out.println("9 .. Ulozeni listu studentu do souboru");
+            System.out.println("10 .. ukonceni aplikace");
             System.out.println();
             volba = sc.nextInt();
             switch (volba) {
@@ -302,8 +303,14 @@ public class App {
                     System.out.println("Studentu v humanitnim oboru je: " + humaPocet);
                     System.out.println("Studentu v kobinovanem oboru je: " + combiPocet);
                     break;
-
                 case 9:
+                    System.out.println("Zadejte jsmeno souboru");
+                    String fileName = sc.next();
+                    FileDatabase fd = new FileDatabase(ts, hs, cs);
+                    fd.SaveToFile(fileName);
+                    break;
+
+                case 10:
                     run = false;
                     break;
             }
