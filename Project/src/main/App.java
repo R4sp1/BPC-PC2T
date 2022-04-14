@@ -171,6 +171,23 @@ public class App {
                             break;
                         }
                     }
+
+                    for (int i = 0; i < hs.size(); i++) {
+                        HumaStudent B = hs.get(i);
+                        if(ID == B.getIdx()){
+                            hs.remove(i);
+                            break;
+                        }
+                    }
+
+                    for (int i = 0; i < cs.size(); i++) {
+                        CombiStudent C = cs.get(i);
+                        if(ID == C.getIdx()){
+                            cs.remove(i);
+                            break;
+                        }
+                    }
+
                     System.out.println("Student smazan!");
                     break;
 
