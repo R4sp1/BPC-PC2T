@@ -279,7 +279,28 @@ public class App {
                     break;
 
                 case 8:
+                    techPocet = 0;
+                    humaPocet = 0;
+                    combiPocet = 0;
 
+                    for (int i = 0; i < ts.size(); i++) {
+                        TechStudent A = ts.get(i);
+                        techPocet++;
+                    }
+
+                    for (int i = 0; i < hs.size(); i++) {
+                        HumaStudent B = hs.get(i);
+                        humaPocet++;
+                    }
+
+                    for (int i = 0; i < cs.size(); i++) {
+                        CombiStudent C = cs.get(i);
+                        combiPocet++;
+                    }
+
+                    System.out.println("Studentu v techicekem oboru je: " + techPocet);
+                    System.out.println("Studentu v humanitnim oboru je: " + humaPocet);
+                    System.out.println("Studentu v kobinovanem oboru je: " + combiPocet);
                     break;
 
                 case 9:
