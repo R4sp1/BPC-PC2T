@@ -38,19 +38,23 @@ public class App {
         StudentType st;
         int volba;
         boolean run = true;
-        boolean caseRun = true;
+        boolean caseRun;
         while (run) {
-            System.out.println("Vyberte pozadovanou cinnost:");
+            System.out.println("\nVyberte pozadovanou cinnost:");
             System.out.println("1 .. vlozeni noveho studenta");
             System.out.println("2 .. Nastaveni znamek studentu");
             System.out.println("3 .. vypis studentu");
             System.out.println("4 .. mazani studentu");
             System.out.println("5 .. Vypis informaci o konketnim studentovi");
             System.out.println("6 .. spusteni dovednosti konkretniho studenta");
-            System.out.println("7 .. ukonceni aplikace");
+            System.out.println("7 .. Vypis obecneho studujniho prumeru v oborech");
+            System.out.println("8 .. Vypis celkoveho poctu studentu v oborech");
+            System.out.println("9 .. ukonceni aplikace");
+            System.out.println();
             volba = sc.nextInt();
             switch (volba) {
                 case 1:
+                    caseRun = true;
                     while (caseRun){
                         System.out.println("Jakeho studenta chcete pridat? 1 = Technickeho oboru, 2 = Humanitniho oboru, 3 = Kombinovaneho oboru");
                         volba = justInt(sc);
@@ -94,9 +98,10 @@ public class App {
                     break;
 
                 case 2:
-                    System.out.println("Zadejte ID studenta kteremu chcete udelit znamku. ");
                     int ID;
                     ArrayList<Integer> m1 = new ArrayList<>();
+                    caseRun = true;
+                    System.out.println("Zadejte ID studenta kteremu chcete udelit znamku. ");
                     ID = justInt(sc);
                     int mark;
                     while (caseRun) {
@@ -243,6 +248,41 @@ public class App {
                     break;
 
                 case 7:
+                    double techPrumer = 0;
+                    int techPocet = 0;
+                    double humaPrumer = 0;
+                    int humaPocet = 0;
+                    double combiPrumer = 0;
+                    int combiPocet = 0;
+
+                    for (int i = 0; i < ts.size(); i++) {
+                        TechStudent A = ts.get(i);
+                        techPrumer += A.getStudyAverage();
+                        techPocet++;
+                    }
+
+                    for (int i = 0; i < hs.size(); i++) {
+                        HumaStudent B = hs.get(i);
+                        humaPrumer += B.getStudyAverage();
+                        humaPocet++;
+                    }
+
+                    for (int i = 0; i < cs.size(); i++) {
+                        CombiStudent C = cs.get(i);
+                        combiPrumer += C.getStudyAverage();
+                        combiPocet++;
+                    }
+
+                    System.out.println("Obecny studijni prumer v techicekem oboru je: " + techPrumer/techPocet);
+                    System.out.println("Obecny studijni prumer v humanitnim oboru je: " + humaPrumer/humaPocet);
+                    System.out.println("Obecny studijni prumer v kobinovanem oboru je: " + combiPrumer/combiPocet);
+                    break;
+
+                case 8:
+
+                    break;
+
+                case 9:
                     run = false;
                     break;
             }
