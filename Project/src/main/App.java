@@ -46,7 +46,8 @@ public class App {
             System.out.println("3 .. vypis studentu");
             System.out.println("4 .. mazani studentu");
             System.out.println("5 .. Vypis informaci o konketnim studentovi");
-            System.out.println("6 .. ukonceni aplikace");
+            System.out.println("6 .. spusteni dovednosti konkretniho studenta");
+            System.out.println("7 .. ukonceni aplikace");
             volba = sc.nextInt();
             switch (volba) {
                 case 1:
@@ -213,6 +214,35 @@ public class App {
                     break;
 
                 case 6:
+                    System.out.println("Zadejte ID studenta");
+                    ID = justInt(sc);
+                    for (int i = 0; i < ts.size(); i++) {
+                        TechStudent A = ts.get(i);
+                        if(ID == A.getIdx()){
+                            System.out.println("Je rok ve kterem se student narodil prestupny? " + A.isLeapYear());
+                            break;
+                        }
+                    }
+
+                    for (int i = 0; i < hs.size(); i++) {
+                        HumaStudent B = hs.get(i);
+                        if(ID == B.getIdx()){
+                            System.out.println("V jakem znameni zverokruhu se student narodil: " + B.getZodiacSign());
+                            break;
+                        }
+                    }
+
+                    for (int i = 0; i < cs.size(); i++) {
+                        CombiStudent C = cs.get(i);
+                        if(ID == C.getIdx()){
+                            System.out.println("Je rok ve kterem se studennt narodil prestuny? " + C.isLeapYear());
+                            System.out.println("V jakem znameni zverokruhu se student narodil: " + C.getZodiacSign());
+                            break;
+                        }
+                    }
+                    break;
+
+                case 7:
                     run = false;
                     break;
             }
