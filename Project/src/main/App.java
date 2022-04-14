@@ -41,10 +41,11 @@ public class App {
         boolean caseRun = true;
         while (run) {
             System.out.println("Vyberte pozadovanou cinnost:");
-            System.out.println("1 .. vlozeni noveho studenta technickeho oboru");
+            System.out.println("1 .. vlozeni noveho studenta");
             System.out.println("2 .. Nastaveni znamek studentu");
             System.out.println("3 .. vypis studentu");
-            System.out.println("4 .. ukonceni aplikace");
+            System.out.println("4 .. mazani studentu");
+            System.out.println("5 .. ukonceni aplikace");
             volba = sc.nextInt();
             switch (volba) {
                 case 1:
@@ -153,6 +154,27 @@ public class App {
                     break;
 
                 case 4:
+                    System.out.println("Zadejte ID studenta ktereho chcete vymazat: ");
+                    ID = justInt(sc);
+                    for (int i = 0; i < ts.size(); i++) {
+                        TechStudent A = ts.get(i);
+                        HumaStudent B = hs.get(i);
+                        CombiStudent C = cs.get(i);
+                        if(ID == A.getIdx()){
+                            ts.remove(i);
+                            break;
+                        } else if(ID == B.getIdx()){
+                            hs.remove(i);
+                            break;
+                        } else if(ID == C.getIdx()){
+                            cs.remove(i);
+                            break;
+                        }
+                    }
+                    System.out.println("Student smazan!");
+                    break;
+
+                case 5:
                     run = false;
                     break;
             }
