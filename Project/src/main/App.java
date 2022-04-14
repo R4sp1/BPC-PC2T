@@ -45,7 +45,8 @@ public class App {
             System.out.println("2 .. Nastaveni znamek studentu");
             System.out.println("3 .. vypis studentu");
             System.out.println("4 .. mazani studentu");
-            System.out.println("5 .. ukonceni aplikace");
+            System.out.println("5 .. Vypis informaci o konketnim studentovi");
+            System.out.println("6 .. ukonceni aplikace");
             volba = sc.nextInt();
             switch (volba) {
                 case 1:
@@ -158,16 +159,8 @@ public class App {
                     ID = justInt(sc);
                     for (int i = 0; i < ts.size(); i++) {
                         TechStudent A = ts.get(i);
-                        HumaStudent B = hs.get(i);
-                        CombiStudent C = cs.get(i);
                         if(ID == A.getIdx()){
                             ts.remove(i);
-                            break;
-                        } else if(ID == B.getIdx()){
-                            hs.remove(i);
-                            break;
-                        } else if(ID == C.getIdx()){
-                            cs.remove(i);
                             break;
                         }
                     }
@@ -192,6 +185,34 @@ public class App {
                     break;
 
                 case 5:
+                    System.out.println("Zadejte ID studenta");
+                    ID = justInt(sc);
+                    for (int i = 0; i < ts.size(); i++) {
+                        TechStudent A = ts.get(i);
+                        if(ID == A.getIdx()){
+                            System.out.println(ts.get(i));
+                            break;
+                        }
+                    }
+
+                    for (int i = 0; i < hs.size(); i++) {
+                        HumaStudent B = hs.get(i);
+                        if(ID == B.getIdx()){
+                            System.out.println(hs.get(i));
+                            break;
+                        }
+                    }
+
+                    for (int i = 0; i < cs.size(); i++) {
+                        CombiStudent C = cs.get(i);
+                        if(ID == C.getIdx()){
+                            System.out.println(cs.get(i));
+                            break;
+                        }
+                    }
+                    break;
+
+                case 6:
                     run = false;
                     break;
             }
