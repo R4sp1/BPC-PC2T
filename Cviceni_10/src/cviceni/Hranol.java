@@ -14,7 +14,7 @@ public class Hranol extends Ctverec{                                //1. Oprava 
     // vypocet objemu hranolu
     float vypoctiObjem() {
         return hrana*hrana*hrana;
-    }              //8. odstraneni slova this. pred hrana
+    }                                                               //8. odstraneni slova this. pred hrana
 
     // nastaveni materialu
     void setDreveny(boolean dreveny){
