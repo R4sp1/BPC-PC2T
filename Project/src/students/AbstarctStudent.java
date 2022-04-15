@@ -1,7 +1,6 @@
 package students;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
@@ -9,7 +8,7 @@ public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
     private String Name;
     protected String Surname;
     private String DateOfBirth;
-    private double StudyAverage;
+    private double studyAverage;
     protected ArrayList<Integer> marksList = new ArrayList<Integer>();
     protected int idx;
 
@@ -22,6 +21,7 @@ public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
 
     public AbstarctStudent(){}
 
+
     public AbstarctStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType) {
         Name = name;
         Surname = surname;
@@ -30,13 +30,23 @@ public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
         this.studentType = studentType;
     }
 
-    public AbstarctStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, ArrayList<Integer> marksList) {
+    public AbstarctStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, double studyAverage,ArrayList<Integer> marksList) {
         Name = name;
         Surname = surname;
         DateOfBirth = dateOfBirth;
         this.idx = idx;
         this.studentType = studentType;
+        this.studyAverage = studyAverage;
         this.marksList = marksList;
+    }
+
+    public AbstarctStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, double studyAverage) {
+        Name = name;
+        Surname = surname;
+        DateOfBirth = dateOfBirth;
+        this.idx = idx;
+        this.studentType = studentType;
+        this.studyAverage = studyAverage;
     }
 
     public String getName() {
@@ -72,12 +82,17 @@ public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
     }
 
     public double getStudyAverage() {
-        double ConStudyAverage = 0;
-        for (int i = 0; i < marksList.size(); i++) {
-            ConStudyAverage += marksList.get(i);
+        double conStudyAverage = 0;
+        if(marksList.size() == 0){
+            return studyAverage;
+        }else{
+            for (int i = 0; i < marksList.size(); i++) {
+                conStudyAverage += marksList.get(i);
+            }
+            conStudyAverage = conStudyAverage/marksList.size();
+            studyAverage = (studyAverage + conStudyAverage)/2;
+            return studyAverage;
         }
-        StudyAverage = ConStudyAverage/marksList.size();
-        return StudyAverage;
     }
 
     public StudentType getStudentType() {

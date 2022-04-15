@@ -12,11 +12,14 @@ import students.Students.*;
 public class TechStudent extends AbstarctStudent{
 
     public TechStudent(){
-
     }
 
-    public TechStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, ArrayList<Integer> marksList) {
-        super(name, surname, dateOfBirth, idx, studentType, marksList);
+    public TechStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, double studyAverage) {
+        super(name, surname, dateOfBirth, idx, studentType, studyAverage);
+    }
+
+    public TechStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, double studyAverge, ArrayList<Integer> marksList) {
+        super(name, surname, dateOfBirth, idx, studentType, studyAverge ,marksList);
     }
 
 

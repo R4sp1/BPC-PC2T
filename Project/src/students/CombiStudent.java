@@ -4,8 +4,12 @@ import java.util.ArrayList;
 
 public class CombiStudent extends AbstarctStudent{
 
-    public CombiStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, ArrayList<Integer> marksList) {
-        super(name, surname, dateOfBirth, idx, studentType, marksList);
+    public CombiStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, double studyAverage) {
+        super(name, surname, dateOfBirth, idx, studentType, studyAverage);
+    }
+
+    public CombiStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, double studyAverge, ArrayList<Integer> marksList) {
+        super(name, surname, dateOfBirth, idx, studentType, studyAverge, marksList);
     }
 
     public CombiStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType) {

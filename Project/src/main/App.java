@@ -3,6 +3,8 @@ package main;
 
 import database.FileDatabase;
 import students.*;
+
+import java.io.File;
 import java.util.*;
 
 public class App {
@@ -20,15 +22,14 @@ public class App {
         return num;
     }
 
+    public static Students s = new Students();
+    public static List<TechStudent> ts = new ArrayList<>();
+    public static List<HumaStudent> hs = new ArrayList<>();
+    public static List<CombiStudent> cs = new ArrayList<>();
+
 
     public static void main(String[] args) {
 
-
-
-        Students s = new Students();
-        List<TechStudent> ts = new ArrayList<>();
-        List<HumaStudent> hs = new ArrayList<>();
-        List<CombiStudent> cs = new ArrayList<>();
 
         Scanner sc = new Scanner(System.in);
         int idx = 0;
@@ -42,7 +43,7 @@ public class App {
         while (run) {
             System.out.println("\nVyberte pozadovanou cinnost:");
             System.out.println("1 .. vlozeni noveho studenta");
-            System.out.println("2 .. Nastaveni znamek studentu");
+            System.out.println("2 .. nastaveni znamek studentu");
             System.out.println("3 .. vypis studentu");
             System.out.println("4 .. mazani studentu");
             System.out.println("5 .. Vypis informaci o konketnim studentovi");
@@ -50,7 +51,8 @@ public class App {
             System.out.println("7 .. Vypis obecneho studujniho prumeru v oborech");
             System.out.println("8 .. Vypis celkoveho poctu studentu v oborech");
             System.out.println("9 .. Ulozeni listu studentu do souboru");
-            System.out.println("10 .. ukonceni aplikace");
+            System.out.println("10 .. nacist soubor");
+            System.out.println("11 .. ukonceni aplikace");
             System.out.println();
             volba = sc.nextInt();
             switch (volba) {
@@ -126,7 +128,7 @@ public class App {
                         if(ID == A.getIdx()){
                             ID = i;
                             A = ts.get(ID);
-                            TechStudent upStudent = new TechStudent(A.getName(),A.getSurname(), A.getDateOfBirth(), A.getIdx(), A.getStudentType(), m1);
+                            TechStudent upStudent = new TechStudent(A.getName(),A.getSurname(), A.getDateOfBirth(), A.getIdx(), A.getStudentType(), A.getStudyAverage(), m1);
                             ts.set(ID, upStudent);
                             break;
                         }
@@ -137,7 +139,7 @@ public class App {
                         if(ID == B.getIdx()){
                             ID = i;
                             B = hs.get(ID);
-                            HumaStudent upStudent = new HumaStudent(B.getName(),B.getSurname(), B.getDateOfBirth(), B.getIdx(), B.getStudentType(), m1);
+                            HumaStudent upStudent = new HumaStudent(B.getName(),B.getSurname(), B.getDateOfBirth(), B.getIdx(), B.getStudentType(), B.getStudyAverage(), m1);
                             hs.set(ID, upStudent);
                             break;
                         }
@@ -148,7 +150,7 @@ public class App {
                         if(ID == C.getIdx()){
                             ID = i;
                             C = cs.get(ID);
-                            CombiStudent upStudent = new CombiStudent(C.getName(),C.getSurname(), C.getDateOfBirth(), C.getIdx(), C.getStudentType(), m1);
+                            CombiStudent upStudent = new CombiStudent(C.getName(),C.getSurname(), C.getDateOfBirth(), C.getIdx(), C.getStudentType(), C.getStudyAverage(), m1);
                             cs.set(ID, upStudent);
                             break;
                         }
@@ -158,6 +160,8 @@ public class App {
 
                 case 3:
                     Collections.sort(ts);
+                    Collections.sort(hs);
+                    Collections.sort(cs);
                     s.printAll();
                     break;
 
@@ -306,65 +310,23 @@ public class App {
                 case 9:
                     System.out.println("Zadejte jsmeno souboru");
                     String fileName = sc.next();
-                    FileDatabase fd = new FileDatabase(ts, hs, cs);
-                    fd.SaveToFile(fileName);
+                    FileDatabase fds = new FileDatabase(ts, hs, cs);
+                    fds.SaveToFile(fileName);
                     break;
 
                 case 10:
+                    System.out.println("Zadejte jmeno souboru");
+                    fileName = sc.next();
+                    FileDatabase fdl = new FileDatabase();
+                    fdl.LoadFromFile(fileName);
+                    break;
+
+                case 11:
                     run = false;
                     break;
             }
         }
 
-
-
-        /*
-        List<TechStudent> listOfTech = createTech();
-        List<HumaStudent> listOfHuma = createHuma();
-        List<CombiStudent> listOfCombi = createCombi();
-
-        Collections.sort(listOfTech);
-        Collections.sort(listOfHuma);
-        Collections.sort(listOfCombi);
-
-        Students s = new Students();
-        s.setListOfTechStudent(listOfTech);
-        s.setListOfHumaStudents(listOfHuma);
-        s.setListOfCombiStudents(listOfCombi);
-        s.printAll();
-         */
     }
 
-    /*
-        public static List<TechStudent> createTech() {
-        ArrayList<Integer> marks = new ArrayList<Integer>();
-        marks.add(1);
-        marks.add(2);
-        marks.add(3);
-        marks.add(4);
-
-        TechStudent e1 = new TechStudent("Tech", "B", "01.01.1988");
-        TechStudent e2 = new TechStudent("Tech", "C", "01.01.2001");
-        TechStudent e3 = new TechStudent("Tech", "A", "01.01.1988");
-        return Arrays.asList(e1, e2, e3);
-    }
-
-    public static List<HumaStudent> createHuma() {
-
-        HumaStudent h1 = new HumaStudent("Huma", "C", "01.01.1988");
-        HumaStudent h2 = new HumaStudent("Huma", "B", "01.01.2001");
-        HumaStudent h3 = new HumaStudent("Huma", "A", "01.01.1988");
-        return Arrays.asList(h1, h2, h3);
-    }
-
-    public static List<CombiStudent> createCombi() {
-
-
-        CombiStudent e1 = new CombiStudent("Combi", "C", "01.01.1988");
-        CombiStudent e2 = new CombiStudent("Combi", "B", "01.01.2001");
-        CombiStudent e3 = new CombiStudent("Combi", "A", "01.01.1988");
-        return Arrays.asList(e1, e2, e3);
-    }
-
-     */
 }

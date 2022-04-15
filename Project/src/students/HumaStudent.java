@@ -4,8 +4,12 @@ import java.util.ArrayList;
 
 public class HumaStudent extends AbstarctStudent {
 
-    public HumaStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, ArrayList<Integer> marksList) {
-        super(name, surname, dateOfBirth, idx, studentType, marksList);
+    public HumaStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, double studyAverage) {
+        super(name, surname, dateOfBirth, idx, studentType, studyAverage);
+    }
+
+    public HumaStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, double studyAverge,ArrayList<Integer> marksList) {
+        super(name, surname, dateOfBirth, idx, studentType, studyAverge, marksList);
     }
 
     public HumaStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType) {
