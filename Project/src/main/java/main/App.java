@@ -1,10 +1,7 @@
 package main;
 
-
-import database.FileDatabase;
+import database.*;
 import students.*;
-
-import java.io.File;
 import java.util.*;
 
 public class App {
@@ -52,7 +49,9 @@ public class App {
             System.out.println("8 .. Vypis celkoveho poctu studentu v oborech");
             System.out.println("9 .. Ulozeni listu studentu do souboru");
             System.out.println("10 .. nacist soubor");
-            System.out.println("11 .. ukonceni aplikace");
+            System.out.println("11 .. nacist MongoDB");
+            System.out.println("12 .. ulozit do MongoDB");
+            System.out.println("13 .. ukonceni aplikace");
             System.out.println();
             volba = sc.nextInt();
             switch (volba) {
@@ -308,20 +307,24 @@ public class App {
                     System.out.println("Studentu v kobinovanem oboru je: " + combiPocet);
                     break;
                 case 9:
-                    System.out.println("Zadejte jsmeno souboru");
-                    String fileName = sc.next();
                     FileDatabase fds = new FileDatabase(ts, hs, cs);
-                    fds.SaveToFile(fileName);
+                    fds.SaveToFile("ProsimFunguj.txt");
                     break;
 
                 case 10:
-                    System.out.println("Zadejte jmeno souboru");
-                    fileName = sc.next();
                     FileDatabase fdl = new FileDatabase();
-                    fdl.LoadFromFile(fileName);
+                    fdl.LoadFromFile("ProsimFunguj.txt");
                     break;
 
                 case 11:
+                    ConnectToMongo.ConnectToMongoDB();
+                    break;
+
+                case 12:
+                    run = false;
+                    break;
+
+                case 13:
                     run = false;
                     break;
             }

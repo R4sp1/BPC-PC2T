@@ -1,0 +1,8 @@
+numOfEntries;7
+1;Alois;Jirasek;23.8.1861;1.5;HUMA
+4;Frodo;Baggins;22.9.1368;2.5;TECH
+3;Bilbo;Baggins;22.9.1290;3.5;COMBI
+2;Charles;Darwin;12.2.1809;2.5;HUMA
+5;Albert;Einstein;14.3.1879;1;TECH
+6;Wernher;von Braun;23.3.1912;1;TECH
+7;Nirmal;Purja;25.6.1983;3.5;COMBI

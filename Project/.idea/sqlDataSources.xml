@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="fe089e93-01c5-4685-ace2-2a2323d7c3c0" name="MongoDB Mapping">
+      <data-sources db="8b5b48b1-1926-4bc1-98c5-af55322aaea0" ddl="158176cd-f2f8-44ac-aa00-faa15ddd729f" />
+      <scope>
+        <node kind="database" negative="1">
+          <node kind="schema" negative="1" />
+        </node>
+      </scope>
+    </mapping>
+  </component>
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="158176cd-f2f8-44ac-aa00-faa15ddd729f" />
+          <option name="name" value="MongoDB (DDL)" />
+          <option name="languageId" value="MongoDB" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$/database" />
+            </array>
+          </option>
+        </State>
+      </list>
+    </option>
+  </component>
+</project>
