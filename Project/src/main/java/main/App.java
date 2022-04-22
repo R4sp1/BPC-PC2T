@@ -1,7 +1,9 @@
 package main;
 
 import database.*;
+import org.bson.Document;
 import students.*;
+
 import java.util.*;
 
 public class App {
@@ -317,7 +319,18 @@ public class App {
                     break;
 
                 case 11:
-                    ConnectToMongo.ConnectToMongoDB();
+                    double num = ReadFromMongo.getNumOfStudents();
+                    System.out.println("Num of students: " + num);
+
+                    ArrayList<Document> Stud;
+                    Stud = ReadFromMongo.ReadFromMongo();
+                    String s;
+                    for(int i = 0; i<Stud.size(); i++){
+                        s = String.valueOf(Stud.get(i));
+                        if(s.contains("HUMA")){
+                            System.out.println(s);
+                        }
+                    }
                     break;
 
                 case 12:
