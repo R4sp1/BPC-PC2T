@@ -2,6 +2,7 @@ package students;
 
 public class SpecializationLogic {
     protected String dateOfBirth;
+
     public SpecializationLogic() {
     }
 
