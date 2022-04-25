@@ -2,7 +2,6 @@ package database;
 
 import main.App;
 import students.*;
-
 import java.io.*;
 import java.util.List;
 import java.util.Objects;
@@ -18,12 +17,12 @@ public class FileDatabase {
 
     }
 
-    public boolean SaveToFile(String fileName) {
+    public void SaveToFile(String fileName) {
         try {
             FileWriter fw = new FileWriter(fileName);
             BufferedWriter out = new BufferedWriter(fw);
             int numOfEntries = App.ts.size() + App.hs.size() + App.cs.size();
-            out.write(new String("numOfEntries;" + numOfEntries));
+            out.write("numOfEntries;" + numOfEntries);
             out.newLine();
             for (int i = 0; i < App.ts.size(); i++) {
                 TechStudent A = App.ts.get(i);
@@ -44,12 +43,10 @@ public class FileDatabase {
             fw.close();
         } catch (IOException e) {
             System.out.println("Soubor nelze vytvorit\n");
-            return false;
         }
-        return true;
     }
 
-    public boolean LoadFromFile(String fileName) {
+    public void LoadFromFile(String fileName) {
         FileReader fr = null;
         BufferedReader in = null;
 
@@ -89,10 +86,8 @@ public class FileDatabase {
             }
         } catch (IOException e) {
             System.out.println("Soubor  nelze otevrit\n");
-            return false;
         } catch (NumberFormatException e) {
             System.out.println("Chyba integrity dat v souboru\n");
-            return false;
         } finally {
             try {
                 if (in != null) {
@@ -101,9 +96,7 @@ public class FileDatabase {
                 }
             } catch (IOException e) {
                 System.out.println("Soubor  nelze zavrit\n");
-                return false;
             }
         }
-        return true;
     }
 }
