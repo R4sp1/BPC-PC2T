@@ -8,7 +8,7 @@ public class HumaStudent extends AbstarctStudent {
         super(name, surname, dateOfBirth, idx, studentType, studyAverage);
     }
 
-    public HumaStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, double studyAverge,ArrayList<Integer> marksList) {
+    public HumaStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, double studyAverge, ArrayList<Integer> marksList) {
         super(name, surname, dateOfBirth, idx, studentType, studyAverge, marksList);
     }
 
@@ -16,7 +16,7 @@ public class HumaStudent extends AbstarctStudent {
         super(name, surname, dateOfBirth, idx, studentType);
     }
 
-    public String getZodiacSign(){
+    public String getZodiacSign() {
         SpecializationLogic st = new SpecializationLogic();
         st.dateOfBirth = getDateOfBirth();
         return st.getZodiacSign();
@@ -26,6 +26,7 @@ public class HumaStudent extends AbstarctStudent {
     public String Specialization() {
         return StudentType.HUMA.getInternalName();
     }
+
     @Override
     public String SpecializationInfo() {
         return StudentType.HUMA.getDescription();

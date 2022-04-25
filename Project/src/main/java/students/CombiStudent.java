@@ -2,7 +2,7 @@ package students;
 
 import java.util.ArrayList;
 
-public class CombiStudent extends AbstarctStudent{
+public class CombiStudent extends AbstarctStudent {
 
     public CombiStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, double studyAverage) {
         super(name, surname, dateOfBirth, idx, studentType, studyAverage);
@@ -16,14 +16,14 @@ public class CombiStudent extends AbstarctStudent{
         super(name, surname, dateOfBirth, idx, studentType);
     }
 
-    public boolean isLeapYear(){
+    public boolean isLeapYear() {
         SpecializationLogic st = new SpecializationLogic();
         st.dateOfBirth = getDateOfBirth();
         return st.isLeapYear();
     }
 
 
-    public String getZodiacSign(){
+    public String getZodiacSign() {
         SpecializationLogic st = new SpecializationLogic();
         st.dateOfBirth = getDateOfBirth();
         return st.getZodiacSign();
@@ -33,10 +33,12 @@ public class CombiStudent extends AbstarctStudent{
     public String Specialization() {
         return StudentType.COMBI.getInternalName();
     }
+
     @Override
     public String SpecializationInfo() {
         return StudentType.COMBI.getDescription();
     }
+
     @Override
     public String toString() {
         return "TechStudent{" +
