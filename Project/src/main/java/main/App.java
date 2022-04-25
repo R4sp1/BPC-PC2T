@@ -321,16 +321,8 @@ public class App {
                     break;
 
                 case 11:
-                    System.out.println("Num of students: " + ReadFromMongo.getNumOfStudents());
-                    int ind = 4;
-                    System.out.println(ReadFromMongo.getIndex(ind));
-                    System.out.println(ReadFromMongo.getName(ind));
-                    System.out.println(ReadFromMongo.getSurname(ind));
-                    System.out.println(ReadFromMongo.getDateOfBirth(ind));
-                    System.out.println(ReadFromMongo.getStudyAvg(ind));
-                    System.out.println(ReadFromMongo.getStudyFiled(ind));
-
-
+                    ReadFromMongo.FetchDataFromMongo(ts, hs, cs);
+                    //System.out.println(ReadFromMongo.getName(0));
                 break;
 
                 case 12:

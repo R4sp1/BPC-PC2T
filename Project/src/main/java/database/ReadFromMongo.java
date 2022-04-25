@@ -6,8 +6,18 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import static com.mongodb.client.model.Filters.gte;
+
+import main.App;
+import students.*;
 
 public class ReadFromMongo {
     private static ArrayList<Document> studentList;
@@ -24,8 +34,8 @@ public class ReadFromMongo {
         }
     }
 
-    public static double getNumOfStudents() {
-        return (double) studentCollection.countDocuments();
+    public static int getNumOfStudents() {
+        return (int) studentCollection.countDocuments();
     }
 
     public static int getIndex(int id) {
@@ -127,6 +137,51 @@ public class ReadFromMongo {
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Index je vetsi nez index databaze!\n");
             return null;
+        }
+    }
+
+    public ReadFromMongo(List<TechStudent> techStudents, List<HumaStudent> humaStudents, List<CombiStudent> combiStudents){
+        App.ts = techStudents;
+        App.hs = humaStudents;
+        App.cs = combiStudents;
+
+    }
+
+    public static void FetchDataFromMongo(List<TechStudent> techStudents, List<HumaStudent> humaStudents, List<CombiStudent> combiStudents){
+        try {
+            App.ts = techStudents;
+            App.hs = humaStudents;
+            App.cs = combiStudents;
+            int numOfEntries = getNumOfStudents();
+            for (int i = 0; i < numOfEntries; i++) {
+                int idx = getIndex(i);
+                String name = getName(i);
+                String surname = getSurname(i);
+                String date = getDateOfBirth(i);
+                double studyAverage = getStudyAvg(i);
+                if(Objects.equals(getStudyFiled(i), "TECH")){
+                    StudentType studentType = StudentType.TECH;
+                    TechStudent tStudent = new TechStudent(name, surname, date, idx, studentType, studyAverage);
+                    App.ts.add(tStudent);
+                }else if(Objects.equals(getStudyFiled(i), "HUMA")){
+                    StudentType studentType = StudentType.HUMA;
+                    HumaStudent hStudent = new HumaStudent(name, surname, date, idx, studentType, studyAverage);
+                    App.hs.add(hStudent);
+                }else if(Objects.equals(getStudyFiled(i), "COMBI")){
+                    StudentType studentType = StudentType.COMBI;
+                    CombiStudent cStudent = new CombiStudent(name, surname, date, idx, studentType, studyAverage);
+                    App.cs.add(cStudent);
+                }
+
+                App.s.setListOfTechStudent(App.ts);
+                App.s.setListOfHumaStudents(App.hs);
+                App.s.setListOfCombiStudents(App.cs);
+
+            }
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Index mimo rozah databaze\n");
+        } catch (NumberFormatException e) {
+            System.out.println("Chyba formatu dat\n");
         }
     }
 }
