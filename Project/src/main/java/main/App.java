@@ -1,9 +1,11 @@
 package main;
 
+import com.mongodb.client.FindIterable;
 import database.*;
 import org.bson.Document;
 import students.*;
 
+import javax.print.Doc;
 import java.util.*;
 
 public class App {
@@ -319,19 +321,17 @@ public class App {
                     break;
 
                 case 11:
-                    double num = ReadFromMongo.getNumOfStudents();
-                    System.out.println("Num of students: " + num);
+                    System.out.println("Num of students: " + ReadFromMongo.getNumOfStudents());
+                    int ind = 4;
+                    System.out.println(ReadFromMongo.getIndex(ind));
+                    System.out.println(ReadFromMongo.getName(ind));
+                    System.out.println(ReadFromMongo.getSurname(ind));
+                    System.out.println(ReadFromMongo.getDateOfBirth(ind));
+                    System.out.println(ReadFromMongo.getStudyAvg(ind));
+                    System.out.println(ReadFromMongo.getStudyFiled(ind));
 
-                    ArrayList<Document> Stud;
-                    Stud = ReadFromMongo.ReadFromMongo();
-                    String s;
-                    for(int i = 0; i<Stud.size(); i++){
-                        s = String.valueOf(Stud.get(i));
-                        if(s.contains("HUMA")){
-                            System.out.println(s);
-                        }
-                    }
-                    break;
+
+                break;
 
                 case 12:
                     run = false;

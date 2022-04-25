@@ -4,19 +4,10 @@ import main.App;
 import students.*;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class FileDatabase {
-
-    /*
-    Students s = new Students();
-    List<TechStudent> ts = new ArrayList<>();
-    List<HumaStudent> hs = new ArrayList<>();
-    List<CombiStudent> cs = new ArrayList<>();
-
-     */
 
     public FileDatabase(){}
 
