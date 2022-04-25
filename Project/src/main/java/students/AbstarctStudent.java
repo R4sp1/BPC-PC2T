@@ -14,6 +14,7 @@ public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
     public StudentType studentType;
 
     public abstract String Specialization();
+    public abstract String SpecializationInfo();
     public AbstarctStudent(){}
 
     public AbstarctStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType) {
