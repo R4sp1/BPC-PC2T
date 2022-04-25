@@ -9,18 +9,12 @@ public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
     protected String Surname;
     private String DateOfBirth;
     private double studyAverage;
-    protected ArrayList<Integer> marksList = new ArrayList<Integer>();
+    protected ArrayList<Integer> marksList = new ArrayList<>();
     protected int idx;
-
     public StudentType studentType;
 
-
-
     public abstract String Specialization();
-    public abstract String SpecializationInfo();
-
     public AbstarctStudent(){}
-
 
     public AbstarctStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType) {
         Name = name;
@@ -53,59 +47,28 @@ public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
         return Name;
     }
 
-    public void setName(String name) {
-        Name = name;
-    }
-
     public String getSurname() {
         return Surname;
-    }
-
-    public void setSurname(String surname) {
-        Surname = surname;
     }
 
     public String getDateOfBirth() {
         return DateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
-        DateOfBirth = dateOfBirth;
-    }
-
-    public void setMarksList(ArrayList<Integer> marksList) {
-        this.marksList = marksList;
-    }
-
-    public void addMarks(ArrayList<Integer> marks) {
-        this.marksList = marks;
-    }
-
     public double getStudyAverage() {
         double conStudyAverage = 0;
-        if(marksList.size() == 0){
-            return studyAverage;
-        }else{
-            for (int i = 0; i < marksList.size(); i++) {
-                conStudyAverage += marksList.get(i);
+        if (marksList.size() != 0) {
+            for (Integer integer : marksList) {
+                conStudyAverage += integer;
             }
-            conStudyAverage = conStudyAverage/marksList.size();
-            studyAverage = (studyAverage + conStudyAverage)/2;
-            return studyAverage;
+            conStudyAverage = conStudyAverage / marksList.size();
+            studyAverage = (studyAverage + conStudyAverage) / 2;
         }
+        return studyAverage;
     }
 
     public StudentType getStudentType() {
         return studentType;
-    }
-
-    public void setStudentType(StudentType studentType) {
-        this.studentType = studentType;
-    }
-
-
-    public void setIdx(int idx) {
-        this.idx = idx;
     }
 
     public int getIdx() {
