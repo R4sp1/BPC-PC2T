@@ -2,7 +2,6 @@ package students;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 public class Students extends AbstarctStudent {
@@ -11,7 +10,7 @@ public class Students extends AbstarctStudent {
     private List<HumaStudent> listOfHumaStudents;
     private List<CombiStudent> listOfCombiStudents;
 
-    public Students(){
+    public Students() {
         listOfTechStudent = new ArrayList<>();
         listOfHumaStudents = new ArrayList<>();
         listOfCombiStudents = new ArrayList<>();
@@ -56,7 +55,6 @@ public class Students extends AbstarctStudent {
     public void setListOfCombiStudents(List<CombiStudent> listOfCombiStudents) {
         this.listOfCombiStudents = listOfCombiStudents;
     }
-
 
 
     public void printAll() {
