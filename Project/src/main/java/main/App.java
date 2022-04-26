@@ -2,6 +2,7 @@ package main;
 
 import database.*;
 import students.*;
+import students.operations.AddMarks;
 import students.operations.DeleteStudent;
 
 import java.util.*;
@@ -103,60 +104,9 @@ public class App {
 
                 case 2:
                     int ID;
-                    ArrayList<Integer> m1 = new ArrayList<>();
-                    caseRun = true;
                     System.out.println("Zadejte ID studenta kteremu chcete udelit znamku. ");
                     ID = justInt(sc);
-                    int mark;
-                    while (caseRun) {
-                        System.out.println("Zadejte znamku: ");
-                        mark = justInt(sc);
-                        m1.add(mark);
-                        System.out.println("Znamka zadana! Chcete zadat dalsi znamku? 1 = ano, 0 = ne");
-                        volba = justInt(sc);
-                        switch (volba) {
-                            case 1:
-                                caseRun = true;
-                                break;
-                            case 0:
-                                caseRun = false;
-                                break;
-                        }
-                    }
-
-                    for (int i = 0; i < ts.size(); i++) {
-                        TechStudent A = ts.get(i);
-                        if(ID == A.getIdx()){
-                            ID = i;
-                            A = ts.get(ID);
-                            TechStudent upStudent = new TechStudent(A.getName(),A.getSurname(), A.getDateOfBirth(), A.getIdx(), A.getStudentType(), A.getStudyAverage(), m1);
-                            ts.set(ID, upStudent);
-                            break;
-                        }
-                    }
-
-                    for (int i = 0; i < hs.size(); i++) {
-                        HumaStudent B = hs.get(i);
-                        if(ID == B.getIdx()){
-                            ID = i;
-                            B = hs.get(ID);
-                            HumaStudent upStudent = new HumaStudent(B.getName(),B.getSurname(), B.getDateOfBirth(), B.getIdx(), B.getStudentType(), B.getStudyAverage(), m1);
-                            hs.set(ID, upStudent);
-                            break;
-                        }
-                    }
-
-                    for (int i = 0; i < cs.size(); i++) {
-                        CombiStudent C = cs.get(i);
-                        if(ID == C.getIdx()){
-                            ID = i;
-                            C = cs.get(ID);
-                            CombiStudent upStudent = new CombiStudent(C.getName(),C.getSurname(), C.getDateOfBirth(), C.getIdx(), C.getStudentType(), C.getStudyAverage(), m1);
-                            cs.set(ID, upStudent);
-                            break;
-                        }
-                    }
-
+                    AddMarks.addMarks(ID, ts, hs, cs);
                     break;
 
                 case 3:
