@@ -192,6 +192,8 @@ public class App {
                         }
                     }
 
+                    DeleteFromMongo.deleteFromMongo(ID);
+
                     System.out.println("Student smazan!");
                     break;
 
