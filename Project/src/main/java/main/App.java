@@ -1,11 +1,8 @@
 package main;
 
-import com.mongodb.client.FindIterable;
 import database.*;
-import org.bson.Document;
 import students.*;
 
-import javax.print.Doc;
 import java.util.*;
 
 public class App {
@@ -321,12 +318,11 @@ public class App {
                     break;
 
                 case 11:
-                    ReadFromMongo.FetchDataFromMongo(ts, hs, cs);
-                    //System.out.println(ReadFromMongo.getName(0));
-                break;
+                    ReadFromMongo.fetchDataFromMongo(ts, hs, cs);
+                    break;
 
                 case 12:
-                    run = false;
+                    InsertIntoMongo.pushToMongo(ts, hs, cs);
                     break;
 
                 case 13:
