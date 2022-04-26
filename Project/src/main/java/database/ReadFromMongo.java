@@ -137,14 +137,9 @@ public class ReadFromMongo {
         }
     }
 
-    public ReadFromMongo(List<TechStudent> techStudents, List<HumaStudent> humaStudents, List<CombiStudent> combiStudents){
-        App.ts = techStudents;
-        App.hs = humaStudents;
-        App.cs = combiStudents;
 
-    }
 
-    public static void FetchDataFromMongo(List<TechStudent> techStudents, List<HumaStudent> humaStudents, List<CombiStudent> combiStudents){
+    public static void fetchDataFromMongo(List<TechStudent> techStudents, List<HumaStudent> humaStudents, List<CombiStudent> combiStudents){
         try {
             App.ts = techStudents;
             App.hs = humaStudents;
