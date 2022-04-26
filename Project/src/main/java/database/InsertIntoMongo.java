@@ -1,5 +1,6 @@
 package database;
 
+import com.mongodb.MongoClientException;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -28,65 +29,74 @@ public class InsertIntoMongo {
         App.hs = humaStudents;
         App.cs = combiStudents;
 
-
-        for (int i = 0; i < App.ts.size(); i++) {
-            TechStudent tStudent = App.ts.get(i);
-            Document check = studentCollection.find(new Document("index", tStudent.getIdx())).first();
-            if (check == null) {
-                Document student = new Document("_id", new ObjectId());
-                student.append("index", tStudent.getIdx())
-                        .append("name", tStudent.getName())
-                        .append("surname", tStudent.getSurname())
-                        .append("dateOfBirth", tStudent.getDateOfBirth())
-                        .append("studyAvg", tStudent.getStudyAverage())
-                        .append("studyField", "TECH");
-                studentCollection.insertOne(student);
-            } else {
-                Bson filter = eq("index", tStudent.getIdx());
-                Bson updateOperation = set("studyAvg", tStudent.getStudyAverage());
-                studentCollection.updateOne(filter, updateOperation);
-                System.out.println("Studentuv: " + tStudent.getIdx() + " " + tStudent.getName() + " " + tStudent.getSurname() + " prumer byl aktualizovan");
+        try {
+            for (int i = 0; i < App.ts.size(); i++) {
+                TechStudent tStudent = App.ts.get(i);
+                Document check = studentCollection.find(new Document("index", tStudent.getIdx())).first();
+                if (check == null) {
+                    Document student = new Document("_id", new ObjectId());
+                    student.append("index", tStudent.getIdx())
+                            .append("name", tStudent.getName())
+                            .append("surname", tStudent.getSurname())
+                            .append("dateOfBirth", tStudent.getDateOfBirth())
+                            .append("studyAvg", tStudent.getStudyAverage())
+                            .append("studyField", "TECH");
+                    studentCollection.insertOne(student);
+                } else {
+                    Bson filter = eq("index", tStudent.getIdx());
+                    Bson updateOperation = set("studyAvg", tStudent.getStudyAverage());
+                    studentCollection.updateOne(filter, updateOperation);
+                    System.out.println("Studentuv: " + tStudent.getIdx() + " " + tStudent.getName() + " " + tStudent.getSurname() + " prumer byl aktualizovan");
+                }
             }
-        }
 
-        for (int i = 0; i < App.hs.size(); i++) {
-            HumaStudent hStudent = App.hs.get(i);
-            Document check = studentCollection.find(new Document("index", hStudent.getIdx())).first();
-            if (check == null) {
-                Document student = new Document("_id", new ObjectId());
-                student.append("index", hStudent.getIdx())
-                        .append("name", hStudent.getName())
-                        .append("surname", hStudent.getSurname())
-                        .append("dateOfBirth", hStudent.getDateOfBirth())
-                        .append("studyAvg", hStudent.getStudyAverage())
-                        .append("studyField", "TECH");
-                studentCollection.insertOne(student);
-            } else {
-                Bson filter = eq("index", hStudent.getIdx());
-                Bson updateOperation = set("studyAvg", hStudent.getStudyAverage());
-                studentCollection.updateOne(filter, updateOperation);
-                System.out.println("Studentuv: " + hStudent.getIdx() + " " + hStudent.getName() + " " + hStudent.getSurname() + " prumer byl aktualizovan");
+            for (int i = 0; i < App.hs.size(); i++) {
+                HumaStudent hStudent = App.hs.get(i);
+                Document check = studentCollection.find(new Document("index", hStudent.getIdx())).first();
+                if (check == null) {
+                    Document student = new Document("_id", new ObjectId());
+                    student.append("index", hStudent.getIdx())
+                            .append("name", hStudent.getName())
+                            .append("surname", hStudent.getSurname())
+                            .append("dateOfBirth", hStudent.getDateOfBirth())
+                            .append("studyAvg", hStudent.getStudyAverage())
+                            .append("studyField", "TECH");
+                    studentCollection.insertOne(student);
+                } else {
+                    Bson filter = eq("index", hStudent.getIdx());
+                    Bson updateOperation = set("studyAvg", hStudent.getStudyAverage());
+                    studentCollection.updateOne(filter, updateOperation);
+                    System.out.println("Studentuv: " + hStudent.getIdx() + " " + hStudent.getName() + " " + hStudent.getSurname() + " prumer byl aktualizovan");
+                }
             }
-        }
 
-        for (int i = 0; i < App.cs.size(); i++) {
-            CombiStudent cStudent = App.cs.get(i);
-            Document check = studentCollection.find(new Document("index", cStudent.getIdx())).first();
-            if (check == null) {
-                Document student = new Document("_id", new ObjectId());
-                student.append("index", cStudent.getIdx())
-                        .append("name", cStudent.getName())
-                        .append("surname", cStudent.getSurname())
-                        .append("dateOfBirth", cStudent.getDateOfBirth())
-                        .append("studyAvg", cStudent.getStudyAverage())
-                        .append("studyField", "TECH");
-                studentCollection.insertOne(student);
-            } else {
-                Bson filter = eq("index", cStudent.getIdx());
-                Bson updateOperation = set("studyAvg", cStudent.getStudyAverage());
-                studentCollection.updateOne(filter, updateOperation);
-                System.out.println("Studentuv: " + cStudent.getIdx() + " " + cStudent.getName() + " " + cStudent.getSurname() + " prumer byl aktualizovan");
+            for (int i = 0; i < App.cs.size(); i++) {
+                CombiStudent cStudent = App.cs.get(i);
+                Document check = studentCollection.find(new Document("index", cStudent.getIdx())).first();
+                if (check == null) {
+                    Document student = new Document("_id", new ObjectId());
+                    student.append("index", cStudent.getIdx())
+                            .append("name", cStudent.getName())
+                            .append("surname", cStudent.getSurname())
+                            .append("dateOfBirth", cStudent.getDateOfBirth())
+                            .append("studyAvg", cStudent.getStudyAverage())
+                            .append("studyField", "TECH");
+                    studentCollection.insertOne(student);
+                } else {
+                    Bson filter = eq("index", cStudent.getIdx());
+                    Bson updateOperation = set("studyAvg", cStudent.getStudyAverage());
+                    studentCollection.updateOne(filter, updateOperation);
+                    System.out.println("Studentuv: " + cStudent.getIdx() + " " + cStudent.getName() + " " + cStudent.getSurname() + " prumer byl aktualizovan");
+                }
             }
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("Index mimo rozsah listu!\n");
+        } catch (MongoClientException e){
+            System.out.println("Chyba monga!\n");
+        } catch (NumberFormatException e){
+            System.out.println("Chyba formatu dat\n");
+        } catch (NullPointerException e){
+            System.out.println("Chyba pointeru\n");
         }
     }
 }
