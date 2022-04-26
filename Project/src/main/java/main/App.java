@@ -2,6 +2,7 @@ package main;
 
 import database.*;
 import students.*;
+import students.operations.DeleteStudent;
 
 import java.util.*;
 
@@ -168,33 +169,7 @@ public class App {
                 case 4:
                     System.out.println("Zadejte ID studenta ktereho chcete vymazat: ");
                     ID = justInt(sc);
-                    for (int i = 0; i < ts.size(); i++) {
-                        TechStudent A = ts.get(i);
-                        if(ID == A.getIdx()){
-                            ts.remove(i);
-                            break;
-                        }
-                    }
-
-                    for (int i = 0; i < hs.size(); i++) {
-                        HumaStudent B = hs.get(i);
-                        if(ID == B.getIdx()){
-                            hs.remove(i);
-                            break;
-                        }
-                    }
-
-                    for (int i = 0; i < cs.size(); i++) {
-                        CombiStudent C = cs.get(i);
-                        if(ID == C.getIdx()){
-                            cs.remove(i);
-                            break;
-                        }
-                    }
-
-                    DeleteFromMongo.deleteFromMongo(ID);
-
-                    System.out.println("Student smazan!");
+                    DeleteStudent.deleteStudent(ID, ts, hs, cs);
                     break;
 
                 case 5:
