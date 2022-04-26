@@ -3,7 +3,7 @@ package students;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
+public abstract class AbstarctStudent implements Comparable<AbstarctStudent> {
 
     private String Name;
     protected String Surname;
@@ -14,8 +14,11 @@ public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
     public StudentType studentType;
 
     public abstract String Specialization();
+
     public abstract String SpecializationInfo();
-    public AbstarctStudent(){}
+
+    public AbstarctStudent() {
+    }
 
     public AbstarctStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType) {
         Name = name;
@@ -25,7 +28,7 @@ public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
         this.studentType = studentType;
     }
 
-    public AbstarctStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, double studyAverage,ArrayList<Integer> marksList) {
+    public AbstarctStudent(String name, String surname, String dateOfBirth, int idx, StudentType studentType, double studyAverage, ArrayList<Integer> marksList) {
         Name = name;
         Surname = surname;
         DateOfBirth = dateOfBirth;
@@ -63,7 +66,11 @@ public abstract class AbstarctStudent implements Comparable<AbstarctStudent>{
                 conStudyAverage += integer;
             }
             conStudyAverage = conStudyAverage / marksList.size();
-            studyAverage = (studyAverage + conStudyAverage) / 2;
+            if (studyAverage == 0) {
+                studyAverage = conStudyAverage;
+            } else {
+                studyAverage = (studyAverage + conStudyAverage) / 2;
+            }
         }
         return studyAverage;
     }
