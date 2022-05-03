@@ -24,7 +24,7 @@ public class AddMarks {
             System.out.println("Zadejte znamku: ");
             while (test) {
                 mark = App.justInt(sc);
-                if (mark < 5 || mark > 1) {
+                if (mark <= 5 && mark >= 1) {
                     m1.add(mark);
                     test = false;
                 } else {

@@ -60,7 +60,7 @@ public class InsertIntoMongo {
                             .append("surname", hStudent.getSurname())
                             .append("dateOfBirth", hStudent.getDateOfBirth())
                             .append("studyAvg", hStudent.getStudyAverage())
-                            .append("studyField", "TECH");
+                            .append("studyField", "HUMA");
                     studentCollection.insertOne(student);
                 } else {
                     Bson filter = eq("index", hStudent.getIdx());
@@ -80,7 +80,7 @@ public class InsertIntoMongo {
                             .append("surname", cStudent.getSurname())
                             .append("dateOfBirth", cStudent.getDateOfBirth())
                             .append("studyAvg", cStudent.getStudyAverage())
-                            .append("studyField", "TECH");
+                            .append("studyField", "COMBI");
                     studentCollection.insertOne(student);
                 } else {
                     Bson filter = eq("index", cStudent.getIdx());
